@@ -1,27 +1,32 @@
-// console.log("BIENVENIDO A GIASA APP")
-// const navegador=navigator.userAgent;  
+async function tryLogin() {
+ const res = await fetch("http://localhost:9000/usuarios/login/", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user: document.getElementById("user").value,
+      password: document.getElementById("password").value,
+    }),
+  });
 
-// moviles=["Mobile","iPhone","iPod","BlackBerry","Opera Mini","Sony","MOT","Nokia","samsung"];
-// let detector=false; 
-// for (const i in moviles) { 
-//    let compruebo=navegador.indexOf(moviles[i]); 
-//    if (compruebo>-1) { 
-//       detector=true; 
-//       }
-//    }
-// if (detector) { 
-//    console.log("Estás en Movil"); 
-//    } else console.log("Estás en PC");
+  const response = await res.json();
+  localStorage.setItem("token", response.token);
+  console.log(response);
+  if(response.rol === "admin")
+  {
+    window.location = "http://127.0.0.1:5500/pages/administracion.html";
+  }
+  else{
+    window.location = "http://127.0.0.1:5500/pages/empleado.html";
+  }
+  if(localStorage.getItem("token")) {
 
-//    document.querySelector('.visible-icon').addEventListener('click', e => {
-//       const passwordInput = document.querySelector('#password');
-//       if (e.target.classList.contains('show')) {
-//           e.target.classList.remove('show');
-//           e.target.textContent = 'Ocultar';
-//           passwordInput.type = 'text';
-//       } else {
-//           e.target.classList.add('show');
-//           e.target.textContent = 'Mostrar';
-//           passwordInput.type = 'password';
-//       }
-//   });
+    getAllLibros();
+
+}
+}
+const logginButton = document.getElementById("login-button");
+logginButton.addEventListener("click", tryLogin);
+
