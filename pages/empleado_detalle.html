@@ -9,56 +9,165 @@
   </head>
   <body class="b-empleado">
     <header >
-      <a href="/GIASA/GiasaApp/pages/administracion.html" class="back-icon">
+      <a href="administracion.html" class="back-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="none" xmlns:v="https://vecta.io/nano"><path d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z" fill="#fff"/></svg>
     </a>
     </header>
     <main class="b-empleado-main" id="admin-container">
-      <img class="b-empleado-main__imagen" src="/GIASA/GiasaApp/_resources/usuario_giasa.png" alt="">
-      
-        
-          
-            <p class="b-empleado-main__nombre">Carlos Fuentes García</p> 
-            <div class="b-empleado-main__puntuacion">
-              
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="staroff"></div>
-              <span class="b-empleado-main__numerico">4.0</span>
-            </div>
-          <p class="b-empleado-main__fecha">20/12/2019</p>
-          <div class="b-empleado-main__datos"> 
-            <div>
-          <p class="b-empleado-main__clave">Obra</p>
-          <p class="b-empleado-main__valor">Gomez de Ulla</p>
-            </div>
-            <div class="line"></div>
-            <div>
-          <p class="b-empleado-main__clave">Cliente</p>
-          <p class="b-empleado-main__valor">Antonio Benito</p>
-            </div>
+      <img
+        class="b-empleado-main__imagen"
+        src="../_resources/usuario_giasa.png"
+        alt=""
+      />
+
+      <p class="b-empleado-main__nombre">Carlos Fuentes García</p>
+      <div class="b-empleado-main__puntuacion">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="staroff"></div>
+        <span class="b-empleado-main__numerico">4.0</span>
+      </div>
+
+      <div class="b-empleado-main__switch-wrapper">
+        <p class="documentacion">Documentación</p>
+        <div class="b-empleado-main__switch">Valoración</div>
+      </div>
+      <div class="b-empleado-main__filtros">
+        <button id="obra" class="button-filtro filtro-inactivo">Obra</button>
+        <button id="cliente" class="button-filtro filtro-activo">Cliente</button>
+      </div>
+      <div class="b-empleado-main__items">
+        <div class="b-empleado-main__item unique-row">
+          <div class="b-empleado-main__item-punt">
+            <img src="../_resources/star.png" class="star" />
+            <p class="b-empleado-main__valor white">4.0</p>
           </div>
-          <div class="b-empleado-main__observaciones">
-          <p class="b-empleado-main__clave">Observaciones</p>
-          <span class="show-icon" >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="none" xmlns:v="https://vecta.io/nano"><path d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z" fill="#014596"/></svg>
-          </span>
-          
-          <p class="b-empleado-main__observaciones__texto">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique
-            quaerat adipisci cum in unde vitae accusantium autem aperiam ipsum
-            vel culpa corrupti obcaecati voluptates, voluptas, quod fuga enim
-            debitis laborum?Lorem ipsum dolor sit amet, consectetur adipisicing
-            elit. Similique quaerat adipisci cum in unde vitae accusantium autem
-            
-          </p>
+          <div class="b-empleado-main__nombre-fecha">
+            <p class="b-empleado-main__nombre en-filtro">Nombre Cliente</p>
+            <p class="b-empleado-main__fecha">20/04/19</p>
+          </div>
+
+          <div class="b-empleado-main__link">
+            <a href="obra_detalle.html" ><svg class="b-empleado-main__link--icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="30"
+                fill="none"
+                xmlns:v="https://vecta.io/nano"
+              >
+                <path
+                  d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z"
+                  fill="#fff"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
-        
-        
-        
-      
+        <div class="b-empleado-main__item unique-row">
+          <div class="b-empleado-main__item-punt">
+            <img src="../_resources/star.png" class="star" />
+            <p class="b-empleado-main__valor white">4.0</p>
+          </div>
+          <div class="b-empleado-main__nombre-fecha">
+            <p class="b-empleado-main__nombre en-filtro">Nombre Cliente</p>
+            <p class="b-empleado-main__fecha">20/04/19</p>
+          </div>
+          <div class="b-empleado-main__link">
+            <a href="obra_detalle.html" ><svg class="b-empleado-main__link--icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="30"
+                fill="none"
+                xmlns:v="https://vecta.io/nano"
+              >
+                <path
+                  d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z"
+                  fill="#fff"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="b-empleado-main__item unique-row">
+          <div class="b-empleado-main__item-punt">
+            <img src="../_resources/star.png" class="star" />
+            <p class="b-empleado-main__valor white">4.0</p>
+          </div>
+          <div class="b-empleado-main__nombre-fecha">
+            <p class="b-empleado-main__nombre en-filtro">Nombre Cliente</p>
+            <p class="b-empleado-main__fecha">20/04/19</p>
+          </div>
+          <div class="b-empleado-main__link">
+            <a href="obra_detalle.html" ><svg class="b-empleado-main__link--icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="30"
+                fill="none"
+                xmlns:v="https://vecta.io/nano"
+              >
+                <path
+                  d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z"
+                  fill="#fff"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="b-empleado-main__item unique-row">
+          <div class="b-empleado-main__item-punt">
+            <img src="../_resources/star.png" class="star" />
+            <p class="b-empleado-main__valor white">4.0</p>
+          </div>
+          <div class="b-empleado-main__nombre-fecha">
+            <p class="b-empleado-main__nombre en-filtro">Nombre Cliente</p>
+            <p class="b-empleado-main__fecha">20/04/19</p>
+          </div>
+          <div class="b-empleado-main__link">
+            <a href="obra_detalle.html" ><svg class="b-empleado-main__link--icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="30"
+                fill="none"
+                xmlns:v="https://vecta.io/nano"
+              >
+                <path
+                  d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z"
+                  fill="#fff"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="b-empleado-main__item unique-row">
+          <div class="b-empleado-main__item-punt">
+            <img src="../_resources/star.png" class="star" />
+            <p class="b-empleado-main__valor white">4.0</p>
+          </div>
+          <div class="b-empleado-main__nombre-fecha">
+            <p class="b-empleado-main__nombre en-filtro">Nombre Cliente</p>
+            <p class="b-empleado-main__fecha">20/04/19</p>
+          </div>
+          <div class="b-empleado-main__link">
+            <a href="obra_detalle.html" ><svg class="b-empleado-main__link--icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="30"
+                fill="none"
+                xmlns:v="https://vecta.io/nano"
+              >
+                <path
+                  d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z"
+                  fill="#fff"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+       
+      </div>
+      <button class="back-button"><a href="./administracion.html"> Atrás</a></button>
     </main>
     <footer>
       <!-- <button class="footer__button">Cancelar</button> -->
