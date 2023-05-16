@@ -38,7 +38,7 @@ function logout(){
 
     console.log("logout")
     localStorage.removeItem("token");
-    window.location = "http://127.0.0.1:5500/index.html";
+    window.location = window.location.origin+"/index.html";
 
 }
 logoutButton.addEventListener('click',logout);

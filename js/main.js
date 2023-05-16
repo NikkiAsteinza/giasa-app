@@ -16,10 +16,12 @@ async function tryLogin() {
   console.log(response);
   if(response.rol === "admin")
   {
-    window.location = "http://127.0.0.1/pages/administracion.html";
+
+    window.location = window.location.origin+"/pages/administracion.html";
   }
   else{
-    window.location = "http://127.0.0.1/pages/empleado.html";
+    window.location = window.location.origin+"/pages/empleado.html";
+
   }
   if(localStorage.getItem("token")) {
 
@@ -27,6 +29,5 @@ async function tryLogin() {
 
 }
 }
-const logginButton = document.getElementById("login-button");
-logginButton.addEventListener("click", tryLogin);
-
+const loginButton = document.getElementById("login-button");
+loginButton.addEventListener("click", tryLogin);
