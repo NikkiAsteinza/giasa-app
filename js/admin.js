@@ -3,7 +3,7 @@ if(localStorage.getItem("token")) {
 
     let mappedWorkers, mappedFeedback;
 
-    fetch("http://localhost:9000/operarios").then((res)=> res.json().then(res=>{
+    fetch("http://localhost:8000/operarios").then((res)=> res.json().then(res=>{
     
     console.log(res);
      mappedWorkers = res.map((result)=>({
@@ -17,7 +17,7 @@ if(localStorage.getItem("token")) {
         obras:result.obras
     }));
     
-    fetch("http://localhost:9000/evaluaciones").then((res)=> res.json().then(res=>
+    fetch("http://localhost:8000/evaluaciones").then((res)=> res.json().then(res=>
     {
         console.log(res);
          mappedFeedback = res.map((result)=>({
@@ -38,7 +38,7 @@ function logout(){
 
     console.log("logout")
     localStorage.removeItem("token");
-    window.location = "http://127.0.0.1:5500/index.html";
+    window.location = window.location.origin+"/index.html";
 
 }
 logoutButton.addEventListener('click',logout);
