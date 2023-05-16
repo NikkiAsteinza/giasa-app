@@ -1,5 +1,5 @@
 async function tryLogin() {
- const res = await fetch("http://localhost:9000/usuarios/login/", {
+ const res = await fetch("http://localhost:8000/usuarios/login/", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -16,10 +16,10 @@ async function tryLogin() {
   console.log(response);
   if(response.rol === "admin")
   {
-    window.location = "http://127.0.0.1:5500/pages/administracion.html";
+    window.location = "http://127.0.0.1/pages/administracion.html";
   }
   else{
-    window.location = "http://127.0.0.1:5500/pages/empleado.html";
+    window.location = "http://127.0.0.1/pages/empleado.html";
   }
   if(localStorage.getItem("token")) {
 
