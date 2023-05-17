@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0087)file://niknas/homes/nikki/Code/Cursos/UpgradeHub/HTML-CSS-S1-Ejercicios/ejercicio6.html -->
+<html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Dev Tools</title>
+    <meta name="description" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+
+  <body class="b-full">
+    <header class="b-header">
+      <img
+        width="40%"
+        id="logo"
+        src="../_resources/giasa.png"
+        alt="GIASA S.L. Logo"
+      />
+      <button id="logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </button>
+    </header>
+    <main class="b-container" id="admin-container">
+      <div class="input-wrapper">
+        <input
+          class="b-form-element search"
+          type="text"
+          name="nombre"
+          placeholder="Nombre del empleado"
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="input-icon-admin"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+
+      <div class="data-container-background">
+        <div id="data-container" class="data-container">
+          <div>
+            <h1>Registro cliente</h1>
+            <div>
+              <label>Nombre cliente</label>
+              <input type="text" id="nombre">
+            </div>
+            <div style="margin:20px 0;">
+              <a id="setClientButton" style="padding:5px 10px; background-color: yellow;">Registrar cliente</a>
+            </div>
+          </div>
+          <div>
+            <h1>Registro obra</h1>
+            <div style="display:grid; grid-template-columns: 100%; gap:10px;">
+              <div>
+                <label>Selecciona cliente</label>
+                <select  id="dropdown-clientes">
+                </select>
+              </div>
+              <div>
+                <label>Pais</label>
+                <input type="text" id="pais" value="España">
+              </div>
+              <div>
+                <label>Comunidad</label>
+                <input type="text" id="comunidad" value="Madrid" disabled>
+              </div>
+              <div>
+                <label>Provincia</label>
+                <input type="text" id="provincia" value="Madrid" disabled>
+              </div>
+              <div>
+                <label>Ciudad</label>
+                <input type="text" id="ciudad" value="Madrid" disabled>
+              </div>
+              <div>
+                <label>Municipio</label>
+                <input type="text" id="municipio">
+              </div>
+              <div>
+                <label>Tipo vía</label>
+                <input type="text" id="via">
+              </div>
+              <div>
+                <label>Direccion</label>
+                <input type="text" id="direccion">
+              </div>
+              <div>
+                <label>Numero</label>
+                <input type="text" id="numero">
+              </div>
+              <div>
+                <label>Puerta</label>
+                <input type="text" id="puerta">
+              </div>
+            </div>
+            <div style="margin:20px 0;">
+              <a id="setSiteButton" style="padding:5px 10px; background-color: yellow;">Registrar obra</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="../js/dev.js"></script>
+</html>
