@@ -21,6 +21,7 @@
   
 }
 
+
 .b-calificar__valorar {
   text-align: center;
   font-size: 32px;
@@ -29,6 +30,7 @@
 }
 .b-empleado-main__comentario__texto{
   margin-top: 5px;
+  margin-bottom: 20px;
   width: 90%;
   height: 20vh;
   padding: 5%;
