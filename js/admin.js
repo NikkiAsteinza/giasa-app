@@ -32,16 +32,7 @@ if(localStorage.getItem("token")) {
     printMappedWorkers(mappedWorkers,mappedFeedback,"data-container","empleado_detalle.html")
 }));
 
-const logoutButton = document.getElementById("logout");
 
-function logout(){
-
-    console.log("logout")
-    localStorage.removeItem("token");
-    window.location = window.location.origin+"/index.html";
-
-}
-logoutButton.addEventListener('click',logout);
 
 function printMappedWorkers(mappedWorkers,mappedFeedback, containerID, goToPage){
     const container = document.getElementById(containerID);
@@ -50,7 +41,7 @@ function printMappedWorkers(mappedWorkers,mappedFeedback, containerID, goToPage)
         const valoracion = mappedFeedback?
             mappedFeedback.filter((e) => e.id_operario == user.id):
             mediaMessage;
-        container.innerHTML += `<a href="${goToPage}">
+        container.innerHTML += `<a href="${goToPage}?id=${user.id}">
         <div class="carta-empleado unique-row">
           <div class="carta-header">
             <p class="empleado-nombre">${user.nombre} ${user.apellido_1} ${user.apellido_2}</p>

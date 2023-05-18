@@ -1,33 +1,16 @@
-async function tryLogin() {
- const res = await fetch("http://localhost:8000/usuarios/login/", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user: document.getElementById("user").value,
-      password: document.getElementById("password").value,
-    }),
-  });
+const header = document.getElementById("header");
 
-  const response = await res.json();
-  localStorage.setItem("token", response.token);
-  console.log(response);
-  if(response.rol === "admin")
-  {
+if(localStorage.getItem("token")) {
+  header.innerHTML += '<button id="logout" class="button cerrar-sesion"><span>cerrar sesión</span></button>';
+  const logoutButton = document.getElementById("logout");
 
-    window.location = window.location.origin+"/pages/administracion.html";
+  function logout(){
+  
+      console.log("logout")
+      localStorage.removeItem("token");
+      window.location = window.location.origin+"/index.html";
+  
   }
-  else{
-    window.location = window.location.origin+"/pages/empleado.html";
-
-  }
-  if(localStorage.getItem("token")) {
-
-    getAllLibros();
-
+  logoutButton.addEventListener('click',logout);
 }
-}
-const loginButton = document.getElementById("login-button");
-loginButton.addEventListener("click", tryLogin);
+
