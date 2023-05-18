@@ -19,11 +19,11 @@ if (localStorage.getItem("token")) {
   
   }))
   
-  fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
-    res.json().then((res) => {
+  fetch("http://localhost:8000/evaluaciones/id_op/" + id).then((res2) =>
+    res2.json().then((res2) => {
       console.log("----------------------------Mapped feedback: ");
-      console.log(res);
-      mappedFeedback = res.map((result) => ({
+      
+      mappedFeedback = res2.map((result) => ({
         id : result._id,
         id_supervisor: result.id_supervisor,
         id_operario: result.id_operario,
@@ -31,7 +31,7 @@ if (localStorage.getItem("token")) {
         descripcion: result.descripcion,
         fecha: result.createdAt
       }));
-
+      console.log(mappedFeedback);
       printWorkerFeedback(mappedFeedback);
     })
   );
@@ -59,7 +59,7 @@ function printWorkerFeedback(mappedFeedback) {
               console.log(cliente);
               mappedFeedback.forEach((feedbackEntry) => {
                 const url = window.location.origin+"/pages/"+goToPage;
-                detalleContainer.innerHTML += `<a href="${url}?id=${feedbackEntry.id}&cliente=${cliente.nombre}&obra=${obra.nombre}"><div data-cliente="${cliente.nombre}" data-obra="${obra.nombre}" class="b-empleado-main__item unique-row">
+                detalleContainer.innerHTML += `<a href="${url}?id=${feedbackEntry.id}&idOp=${feedbackEntry.id_operario}&cliente=${cliente.nombre}&obra=${obra.nombre}"><div data-cliente="${cliente.nombre}" data-obra="${obra.nombre}" class="b-empleado-main__item unique-row">
                   <div class="b-empleado-main__item-punt">
                     <img src="../_resources/star.png" class="star" />
                     <p class="b-empleado-main__valor white">${feedbackEntry.evaluacion}</p>

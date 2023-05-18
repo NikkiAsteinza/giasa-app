@@ -72,14 +72,16 @@ function printMappedWorkers(mappedWorkers) {
     let mappedFeedback;
     fetch("http://localhost:8000/evaluaciones/id/" + user.id).then((res) =>
       res.json().then((res) => {
-        console.log(res);
-        mappedFeedback = res.map((result) => ({
-          id_usuario: result.id_usuario,
-          id_operario: result.id_operario,
-          evaluacion: result.evaluacion,
-          comentario: result.comentario,
-          fecha_evaluacion: result.fecha_evaluacion,
-        }));
+        if(res){
+          console.log(res);
+          mappedFeedback = res.map((result) => ({
+            id_usuario: result.id_usuario,
+            id_operario: result.id_operario,
+            evaluacion: result.evaluacion,
+            comentario: result.comentario,
+            fecha_evaluacion: result.fecha_evaluacion,
+          }));
+        }
       })
     );
     const mediaMessage = "N/A";
