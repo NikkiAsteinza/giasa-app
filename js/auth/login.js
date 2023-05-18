@@ -26,16 +26,8 @@ async function tryLogin() {
    
      const response = await res.json();
      localStorage.setItem("token", response.token);
+     localStorage.setItem("rol",response.rol)
+     localStorage.setItem("id",response._id)
      console.log(response);
-     if(response.rol === "admin")
-     {
-       window.location = window.location.origin+"/pages/administracion.html";
-     }
-     else if(response.rol === "dev"){
-        window.location = window.location.origin+"/pages/dev.html";
-     }
-     else{
-       window.location = window.location.origin+"/pages/empleado.html";
-   
-     }
+     window.location = window.location.origin+"/pages/main.html"
    }

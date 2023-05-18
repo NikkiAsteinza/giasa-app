@@ -15,10 +15,7 @@
     </header>
     <main class="b-empleado-main" id="admin-container">
       <img class="b-empleado-main__imagen" src="../_resources/usuario_giasa.png" alt="">
-      
-        
-          
-            <p class="b-empleado-main__nombre">Nombre Cliente</p> 
+            <p id="evaluacion-obra" class="b-empleado-main__nombre">Nombre Obra</p> 
             <div class="b-empleado-main__puntuacion">
               
               <div class="star"></div>
@@ -26,37 +23,38 @@
               <div class="star"></div>
               <div class="star"></div>
               <div class="staroff"></div>
-              <span class="b-empleado-main__numerico">4.0</span>
+              <span id="evaluacion-valor" class="b-empleado-main__numerico">4.0</span>
             </div>
-          <p class="b-empleado-main__fecha">20/12/2019</p>
+          <p id="evaluacion-fecha" class="b-empleado-main__fecha">20/12/2019</p>
           <div class="b-empleado-main__datos"> 
-            <div>
+            <!-- <div>
           <p class="b-empleado-main__clave">Obra</p>
           <p class="b-empleado-main__valor">Gomez de Ulla</p>
             </div>
-            <!-- <div class="line"></div>
+            <div class="line"></div> -->
             <div>
           <p class="b-empleado-main__clave">Cliente</p>
-          <p class="b-empleado-main__valor">Antonio Benito</p>
-            </div> -->
+          <p id="evaluacion-cliente" class="b-empleado-main__valor">Antonio Benito</p>
+            </div>
           </div>
           <div class="b-empleado-main__observaciones">
           <p class="b-empleado-main__clave">Observaciones</p>
-          <img class="write-icon write-icon--admin" src="../_resources/escribir.png">
+          <!-- <span class="show-icon" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="none" xmlns:v="https://vecta.io/nano"><path d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z" fill="#014596"/></svg>
+          </span> -->
           <div class="textarea-container">
-          <textarea class="b-empleado-main__observaciones__texto" resize="none">
+          <textarea id="evaluacion-decripcion" class="b-empleado-main__observaciones__texto" resize="none">
            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis autem assumenda ipsum. Ab quasi dolores sed repellendus rerum, atque ipsum inventore, officia cumque voluptatum dolor veritatis reprehenderit, asperiores vitae accusamus?
             
           </textarea>
         </div>
         </div>
+        
         <div class="buttons-wrapper">
-            <button class="button back-button"><a href="./empleado_detalle.html"> Atrás</a></button>
-            <button class="button accept-button">Aceptar</button>
-            <!-- <button class="button back-button">Siguiente</button> -->
-          </div>
-        
-        
+        <button class="button back-button"><a href="./empleado_detalle.html"> Atrás</a></button>
+        <button class="button accept-button">Aceptar</button>
+        <!-- <button class="back-button">Siguiente</button> -->
+      </div>
       
     </main>
     <footer>
@@ -65,6 +63,6 @@
 
     </footer>
   </body>
-  <script src="../js/cliente_detalle.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="../js/feedback_detalle.js"></script>
+  <script src="../js/auth/logout.js"></script>
 </html>
