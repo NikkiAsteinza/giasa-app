@@ -16,10 +16,12 @@ async function tryLogin() {
   console.log(response);
   if(response.rol === "admin")
   {
+
     window.location = window.location.origin+"/pages/administracion.html";
   }
   else{
     window.location = window.location.origin+"/pages/empleado.html";
+
   }
   if(localStorage.getItem("token")) {
 

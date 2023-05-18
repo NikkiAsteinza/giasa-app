@@ -13,7 +13,7 @@
 const botonObra = document.getElementById("obra");
 const botonCliente = document.getElementById("cliente");
 const etiquetasP = document.querySelectorAll("p.en-filtro");
-const etiquetasA = document.querySelectorAll("div.b-empleado-main__link a");
+const etiquetasA = document.querySelectorAll(".link-detalle");
 
 botonObra.addEventListener("click", () => {
   if (botonObra.classList.contains("filtro-inactivo")) {
