@@ -27,7 +27,7 @@ async function tryLogin() {
      const response = await res.json();
      localStorage.setItem("token", response.token);
      localStorage.setItem("rol",response.rol)
-     localStorage.setItem("id",response._id)
+     localStorage.setItem("id",response.id)
      console.log(response);
      window.location = window.location.origin+"/pages/main.html"
    }

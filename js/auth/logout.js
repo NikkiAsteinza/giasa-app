@@ -1,7 +1,7 @@
 
 if(localStorage.getItem("token")) {
     const header = document.getElementById("header");
-    
+
     header.innerHTML += '<button id="logout" class="button cerrar-sesion"><span>cerrar sesión</span></button>';
     const logoutButton = document.getElementById("logout");
     
@@ -13,4 +13,5 @@ if(localStorage.getItem("token")) {
     
     }
     logoutButton.addEventListener('click',logout);
+    console.log(localStorage);
 }
