@@ -84,7 +84,7 @@ function printWorkerFeedback(mappedFeedback) {
                     </a>
                   </div> -->
                 </div>
-              </div></>`;
+              </div></a>`;
               });
             })
         );
