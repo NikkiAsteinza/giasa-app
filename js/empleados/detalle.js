@@ -1,4 +1,5 @@
 const detalleContainer = document.getElementById("worker-feedback-list");
+const nombreContainer = document.querySelector(".b-empleado-main__nombre");
 const goToPage = localStorage.getItem("rol")===  "admin"? "feedback_detalle.html":"valoracion.html";
 
 let mappedFeedback, mappedSite, cliente, obra;
@@ -8,6 +9,16 @@ if (localStorage.getItem("token")) {
   const urlParams = new URLSearchParams(queryString);
 
   const id = urlParams.get("id");
+
+  fetch("http://localhost:8000/operarios/id/" + id).then((res) =>
+  res.json().then((res) => {
+    console.log("----------------------------Operario: ");
+    console.log(res);
+    const nombreCompleto= res[0].nombre+" "+res[0].apellido_1 +" "+res[0].apellido_2;
+    nombreContainer.innerHTML = nombreCompleto;
+  
+  }))
+  
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
     res.json().then((res) => {
       console.log("----------------------------Mapped feedback: ");
