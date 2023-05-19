@@ -20,7 +20,7 @@ if (localStorage.getItem("token")) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get("id");
-  const idOp = urlParams.get("idOp");
+  
   console.log(id);
   const feedbackCliente = urlParams.get("cliente");
   const feedbackObra = urlParams.get("obra");
@@ -37,26 +37,7 @@ if (localStorage.getItem("token")) {
   const evaluacionDescripcion = document.getElementById("evaluacion-descripcion");
   const evaluacionValor = document.getElementById("evaluacion-valor");
 
-  acceptButton.addEventListener("click", async function(){
-    console.log("accept button clicked")
-    const res = await fetch("http://localhost:8000/evaluaciones", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id_operario:idOp,
-        evaluacion:document.getElementById("evaluacion-valor"),
-        descripcion: document.getElementById("evaluacion-decripcion"),
-        id_supervisor: localStorage.getItem("id")
-      }),
-    });
   
-    const response = await res.json();
-    console.log(response)
-    location.reload();
-  })
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
   res.json().then((res) => {
     console.log(res);
