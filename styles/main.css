@@ -317,6 +317,9 @@ footer {
     border-top: 50px solid #014596;
     border-bottom: 50px solid #014596;
   }
+  .b-empleado-main__imagen {
+    right: auto;
+  }
 }
 @media (min-width: 360px) {
   .carta-empleado {
@@ -398,9 +401,7 @@ footer {
   .b-empleado-main__items {
     width: 50%;
   }
-  .b-empleado-main__imagen {
-    right: auto;
-  }
+  
   footer {
     display: none;
   }

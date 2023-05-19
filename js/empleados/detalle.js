@@ -85,7 +85,7 @@ function printWorkerFeedback(mappedFeedback) {
                     <p class="b-empleado-main__valor white">${feedbackEntry.evaluacion}</p>
                   </div>
                   <div class="b-empleado-main__nombre-fecha">
-                    <p class="b-empleado-main__nombre en-filtro">${cliente.nombre}</p>
+                    <p class="b-empleado-main__nombre en-filtro">${obra.cliente}</p>
                     <p class="b-empleado-main__fecha">${feedbackEntry.fecha}</p>
                   </div>
                   <!-- <div class="b-empleado-main__link">
