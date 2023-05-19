@@ -87,3 +87,29 @@ function changeNumber(){
  let starsOn=document.getElementsByClassName("star")
  dato.textContent=`${starsOn.length}.0`
 }
+if (localStorage.getItem("token")) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const obra = urlParams.get("obra");
+  const operario = urlParams.get("operario");
+acceptButton.addEventListener("click", async function(){
+  console.log("accept button clicked")
+  const res = await fetch("http://localhost:8000/evaluaciones", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id_operario:operario,
+      evaluacion:document.getElementById("evaluacion-valor"),
+      descripcion: document.getElementById("evaluacion-decripcion"),
+      id_supervisor: localStorage.getItem("id"),
+      id_obra: obra
+    }),
+  });
+
+  const response = await res.json();
+  console.log(response)
+  location.reload();
+})}
