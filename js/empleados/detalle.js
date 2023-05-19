@@ -1,6 +1,6 @@
 const detalleContainer = document.getElementById("worker-feedback-list");
 const nombreContainer = document.querySelector(".b-empleado-main__nombre");
-const goToPage = localStorage.getItem("rol")===  "admin"? "feedback_detalle.html":"valoracion.html";
+const goToPage =  "feedback_detalle.html";
 
 let mappedFeedback, mappedSite, cliente, obra;
 

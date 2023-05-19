@@ -1,5 +1,4 @@
 const textarea = document.querySelector('textarea');
-const acceptButton=document.querySelector('.accept-button');
 
 
 // textarea.addEventListener('focus', function() {
@@ -21,7 +20,7 @@ if (localStorage.getItem("token")) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get("id");
-  
+
   console.log(id);
   const feedbackCliente = urlParams.get("cliente");
   const feedbackObra = urlParams.get("obra");

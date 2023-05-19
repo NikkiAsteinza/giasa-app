@@ -87,12 +87,16 @@ function changeNumber(){
  let starsOn=document.getElementsByClassName("star")
  dato.textContent=`${starsOn.length}.0`
 }
-if (localStorage.getItem("token")) {
+
+const acceptButton = document.getElementById('accept-button');
+
+acceptButton.addEventListener("click", async function(){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const obra = urlParams.get("obra");
-  const operario = urlParams.get("operario");
-acceptButton.addEventListener("click", async function(){
+  const obra = urlParams.get("obraActual");
+  const operario = urlParams.get("id");
+  
+
   console.log("accept button clicked")
   const res = await fetch("http://localhost:8000/evaluaciones", {
     method: "POST",
@@ -102,8 +106,8 @@ acceptButton.addEventListener("click", async function(){
     },
     body: JSON.stringify({
       id_operario:operario,
-      evaluacion:document.getElementById("evaluacion-valor"),
-      descripcion: document.getElementById("evaluacion-decripcion"),
+      evaluacion:document.getElementById("evaluacion-valor").value,
+      descripcion: document.getElementById("evaluacion-decripcion").value,
       id_supervisor: localStorage.getItem("id"),
       id_obra: obra
     }),
@@ -112,4 +116,4 @@ acceptButton.addEventListener("click", async function(){
   const response = await res.json();
   console.log(response)
   location.reload();
-})}
+})
