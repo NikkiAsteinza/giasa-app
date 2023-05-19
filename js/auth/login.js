@@ -7,7 +7,7 @@ if (!localStorage.getItem("token")) {
   loginButton.addEventListener("click", tryLogin);
 } else {
   console.log("signed id");
-  goToMain();
+  //goToMain();
 }
 
 async function tryLogin() {
