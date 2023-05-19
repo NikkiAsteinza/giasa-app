@@ -1,7 +1,19 @@
 const empleadoDetallePage = "empleado-detalle.html";
 const mainContainer = "data-container";
+const buscaOperario=document.getElementById("buscaOperario")
+let filteredMappedWorkers, mappedWorkers, mappedFeedback;
 
-let mappedWorkers, mappedFeedback;
+buscaOperario.addEventListener("input",()=>{
+  filterOperariosByName(mappedWorkers, buscaOperario.value)
+  printMappedWorkers(filteredMappedWorkers)
+})
+function filterOperariosByName(operarios, name) {
+  filteredMappedWorkers= operarios.filter(operario =>
+    operario.nombre.toLowerCase().includes(name.toLowerCase()) ||
+    operario.apellido_1.toLowerCase().includes(name.toLowerCase()) ||
+    operario.apellido_2.toLowerCase().includes(name.toLowerCase())
+  );
+}
 
 if (localStorage.getItem("token")) {
   const rol = localStorage.getItem("rol");
@@ -68,6 +80,7 @@ if (localStorage.getItem("token")) {
 
 function printMappedWorkers(mappedWorkers) {
   const container = document.getElementById(mainContainer);
+  container.innerHTML=""
   mappedWorkers.forEach((user) => {
     let mappedFeedback;
     fetch("http://localhost:8000/evaluaciones/id/" + user.id).then((res) =>
