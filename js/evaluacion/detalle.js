@@ -34,7 +34,7 @@ if (localStorage.getItem("token")) {
   const nombreObra = document.getElementById("evaluacion-obra");
   nombreObra.innerText = feedbackObra;
   
-  const evaluacionDescripcion = document.getElementById("evaluacion-decripcion");
+  const evaluacionDescripcion = document.getElementById("evaluacion-descripcion");
   const evaluacionValor = document.getElementById("evaluacion-valor");
 
   acceptButton.addEventListener("click", async function(){
