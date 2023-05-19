@@ -21,8 +21,13 @@ if (localStorage.getItem("token")) {
   
   fetch("http://localhost:8000/evaluaciones/id_op/" + id).then((res2) =>
     res2.json().then((res2) => {
-      console.log("----------------------------Mapped feedback: ");
-      
+      if(!res2){
+        console.log("---------------- 1. No feedback for user");
+        const feedbackList = document.getElementById("worker-feedback-list");
+        feedbackList.innerHTML +="<p style='text-align:center;'>Este usuario aun no tiene valoraciones</p>";
+       
+
+      }else{
       mappedFeedback = res2.map((result) => ({
         id : result._id,
         id_supervisor: result.id_supervisor,
@@ -31,21 +36,36 @@ if (localStorage.getItem("token")) {
         descripcion: result.descripcion,
         fecha: result.createdAt
       }));
-      console.log(mappedFeedback);
+
+      toggleCrearValoracionButton();
       printWorkerFeedback(mappedFeedback);
-    })
+    }})
   );
 }
 
-function printWorkerFeedback(mappedFeedback) {
-  mappedFeedback.forEach((feedback) => {
-    console.log("---------------- 1. Feedback id supervisor");
-    console.log(feedback.id_supervisor);
-    console.log("---------------- 2. Mapped site: ");
-    getCurrentSite(feedback.id_supervisor);
+function toggleCrearValoracionButton(){
+  const crearValoracionButton = document.getElementById("crear-valoracion");
 
-    
-  });
+  if(localStorage.getItem("rol")== "admin"){
+    crearValoracionButton.classList.add("hidden");
+  }
+  else{
+    const crearValoracionButton = document.getElementById("crear-valoracion");
+    crearValoracionButton.setAttribute("href","valoracion.html?"+id); 
+  }
+}
+
+function printWorkerFeedback(mappedFeedback) {
+
+    mappedFeedback.forEach((feedback) => {
+      console.log("---------------- 1. Feedback id supervisor");
+      console.log(feedback.id_supervisor);
+      console.log("---------------- 2. Mapped site: ");
+      
+      getCurrentSite(feedback.id_supervisor);
+    })
+  
+};
 
   function getCurrentSite(idSupervisor) {
     fetch("http://localhost:8000/obras/sup/" + idSupervisor).then((res) =>
@@ -91,7 +111,6 @@ function printWorkerFeedback(mappedFeedback) {
       })
     );
   }
-}
 
 // var showIcon = document.querySelector(".show-icon");
 // var text = document.querySelector(".b-empleado-main__observaciones__texto");
