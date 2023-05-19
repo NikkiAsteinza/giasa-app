@@ -7,8 +7,7 @@ if (!localStorage.getItem("token")) {
   loginButton.addEventListener("click", tryLogin);
 } else {
   console.log("signed id");
-  mainContainer.innerHTML =
-    '<div class="info"><p>Ya has iniciado sesión</p></div>';
+  goToMain();
 }
 
 async function tryLogin() {
@@ -29,6 +28,9 @@ async function tryLogin() {
   localStorage.setItem("rol", response.rol);
   localStorage.setItem("id", response.id);
   console.log(response);
+  goToMain();
+}
+function goToMain(){
   const currentPath = window.location.pathname;
   const newPath = currentPath.replace(/index\.html$/, "pages/main.html");
   window.location.href = newPath;

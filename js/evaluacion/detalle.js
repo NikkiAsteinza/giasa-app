@@ -37,7 +37,9 @@ if (localStorage.getItem("token")) {
   const evaluacionDescripcion = document.getElementById("evaluacion-descripcion");
   const evaluacionValor = document.getElementById("evaluacion-valor");
 
-  
+  const botonAtrasFeedback = document.getElementById("feedbackAtras");
+  botonAtrasFeedback.setAttribute("href","./empleado-detalle.html?id="+id)
+
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
   res.json().then((res) => {
     console.log(res);
