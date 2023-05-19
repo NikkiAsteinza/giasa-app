@@ -3,7 +3,7 @@ const empleadoValoracionPage = "valoracion.html";
 
 const mainContainer = "data-container";
 const buscaOperario=document.getElementById("buscaOperario")
-let filteredMappedWorkers, mappedWorkers, mappedFeedback;
+let filteredMappedWorkers, mappedWorkers, mappedFeedback,endPoint,mappedObra;
 
 buscaOperario.addEventListener("input",()=>{
   filterOperariosByName(mappedWorkers, buscaOperario.value)
@@ -20,16 +20,29 @@ function filterOperariosByName(operarios, name) {
 if (localStorage.getItem("token")) {
   const rol = localStorage.getItem("rol");
   if (rol) {
-    let endPoint;
     switch (rol) {
       case "admin":
         endPoint ="http://localhost:8000/operarios";
+        getWorkers(endPoint);
         break;
       case "no_admin":
-        endPoint ="http://localhost:8000/operarios";
-        break;
+        
+        fetch("http://localhost:8000/obras/sup/"+localStorage.getItem("id")).then((res) =>
+            res.json().then((res) => {
+              console.log("Id de la obra del supervisor:"+res._id);
+              // mappedObra = res.map((result) => ({
+              //   id: result._id,
+              // }));
+              endPoint ="http://localhost:8000/operarios/obra/"+res._id;
+              getWorkers(endPoint);
+            }));
+            break;
+        } 
     }
-    fetch(endPoint).then((res) =>
+  }
+
+function getWorkers(endPoint){
+  fetch(endPoint).then((res) =>
           res.json().then((res) => {
             console.log(res);
             mappedWorkers = res.map((result) => ({
@@ -46,9 +59,7 @@ if (localStorage.getItem("token")) {
             printMappedWorkers(mappedWorkers);
           })
         );
-  }
 }
-
 function printMappedWorkers(mappedWorkers) {
   const container = document.getElementById(mainContainer);
   container.innerHTML=""
@@ -70,7 +81,7 @@ function printMappedWorkers(mappedWorkers) {
     );
     const mediaMessage = "N/A";
     const valoracion = mappedFeedback
-      ? mappedFeedback.filter((e) => e.id_operario == worker.id)
+      ? mappedFeedback.valoracion
       : mediaMessage;
     const targetUrl = localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage;
     container.innerHTML += `<a href="${targetUrl}?id=${worker.id}?obraActual=${worker.obra_actual}">
