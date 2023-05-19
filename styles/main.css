@@ -325,6 +325,10 @@ footer {
   .empleado-nombre {
     font-size: 16px;
   }
+  .b-empleado-main {
+    border-top-left-radius: 10vw;
+    border-bottom-right-radius: 10vw;
+  }
 }
 
 @media (min-width: 720px) and (min-height: 600px) {

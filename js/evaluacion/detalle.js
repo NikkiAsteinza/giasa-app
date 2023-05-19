@@ -1,6 +1,7 @@
 const textarea = document.querySelector('textarea');
 const acceptButton=document.querySelector('.accept-button');
 
+
 // textarea.addEventListener('focus', function() {
 //   adjustHeight(this);
 //   acceptButton.className +=" back-button"
