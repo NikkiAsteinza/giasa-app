@@ -9,7 +9,7 @@ if(localStorage.getItem("token")) {
     
         console.log("logout")
         localStorage.removeItem("token");
-        window.location = window.location.origin+"/index.html";
+        window.location.href ="../index.html";
     
     }
     logoutButton.addEventListener('click',logout);
