@@ -60,6 +60,9 @@ function getWorkers(endPoint){
           })
         );
 }
+
+let mediaValoracion;
+
 function printMappedWorkers(mappedWorkers) {
   const container = document.getElementById(mainContainer);
   container.innerHTML=""
@@ -79,24 +82,29 @@ function printMappedWorkers(mappedWorkers) {
         }
       })
     );
-    const mediaMessage = "N/A";
-    const valoracion = mappedFeedback
-      ? mappedFeedback.valoracion
-      : mediaMessage;
-    const targetUrl = localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage;
-    container.innerHTML += `<a href="${targetUrl}?id=${worker.id}?obraActual=${worker.obra_actual}">
-      <div class="carta-empleado unique-row">
-        <div class="carta-header">
-          <p class="empleado-nombre">${worker.nombre} ${worker.apellido_1} ${worker.apellido_2}</p>
-          <div class="carta-header-valoracion">
-            <div class="empleado-valoracion">${valoracion}</div>
-            <div class="empleado-estrellas">
-              <div class="star"></div>
+
+
+    fetch("http://localhost:8000/evaluaciones/midEval/" + worker.id).then((res) =>
+    res.json().then((res) => {
+      if(res){
+        console.log(res);
+        mediaValoracion = res;
+      }
+      const targetUrl = localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage;
+      container.innerHTML += `<a href="${targetUrl}?id=${worker.id}?obraActual=${worker.obra_actual}">
+        <div class="carta-empleado unique-row">
+          <div class="carta-header">
+            <p class="empleado-nombre">${worker.nombre} ${worker.apellido_1} ${worker.apellido_2}</p>
+            <div class="carta-header-valoracion">
+              <div class="empleado-valoracion">${mediaValoracion}</div>
+              <div class="empleado-estrellas">
+                <div class="star"></div>
+              </div>
             </div>
           </div>
+          <img class="usuario-imagen" src="../_resources/usuario_giasa.png" alt="">
         </div>
-        <img class="usuario-imagen" src="../_resources/usuario_giasa.png" alt="">
-      </div>
-      </a>`;
-  });
+        </a>`;
+    })
+  );});
 }
