@@ -78,7 +78,7 @@ function printWorkerFeedback(mappedFeedback) {
               cliente = res2;
               console.log(cliente);
               mappedFeedback.forEach((feedbackEntry) => {
-                const url = window.location.origin+"/pages/"+goToPage;
+                const url = "./"+goToPage;
                 detalleContainer.innerHTML += `<a href="${url}?id=${feedbackEntry.id}&idOp=${feedbackEntry.id_operario}&cliente=${cliente.nombre}&obra=${obra.nombre}"><div data-cliente="${cliente.nombre}" data-obra="${obra.nombre}" class="b-empleado-main__item unique-row">
                   <div class="b-empleado-main__item-punt">
                     <img src="../_resources/star.png" class="star" />
