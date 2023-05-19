@@ -88,7 +88,7 @@ function changeNumber(){
  dato.textContent=`${starsOn.length}.0`
 }
 
-const acceptButton = document.getElementById('accept-button');
+const acceptButton = document.getElementById('acceptButton');
 
 acceptButton.addEventListener("click", async function(){
   const queryString = window.location.search;
@@ -107,7 +107,7 @@ acceptButton.addEventListener("click", async function(){
     body: JSON.stringify({
       id_operario:operario,
       evaluacion:document.getElementById("evaluacion-valor").value,
-      descripcion: document.getElementById("evaluacion-decripcion").value,
+      descripcion: document.getElementById("evaluacion-descripcion").value,
       id_supervisor: localStorage.getItem("id"),
       id_obra: obra
     }),
