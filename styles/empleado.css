@@ -69,7 +69,7 @@
 .b-empleado-main__items {
   border-bottom-right-radius: 20vw;
   overflow-y: auto;
-  height:100%;
+  max-height: 30vh;
   width: 90%;
 }
 .b-empleado-main__item {
@@ -149,6 +149,7 @@
   border-radius: 50%;
 }
 .b-empleado-main__nombre {
+  text-align: center;
   color: #014596;
   font-size: 18px;
   font-weight: 700;
@@ -261,5 +262,7 @@
     max-height: 25vh;
   }
 
-
+  .b-empleado-main__items {
+    max-height: 40vh;
+  }
 }
