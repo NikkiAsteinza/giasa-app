@@ -320,6 +320,17 @@ footer {
   .b-empleado-main__imagen {
     right: auto;
   }
+  .b-empleado-main__filtros{
+    width: 66%
+  }
+  .b-empleado-main__switch-wrapper{
+    width: 50%
+  }
+  .b-empleado-main__items {
+    border-bottom-right-radius: 1vw;
+    
+    width: 70%;
+}
 }
 @media (min-width: 360px) {
   .carta-empleado {
