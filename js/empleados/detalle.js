@@ -73,7 +73,7 @@ function toggleCrearValoracionButton(feedback) {
   if (localStorage.getItem("rol") == "no_admin") {
     crearValoracionButton.classList.add("hidden");
   } else {
-    crearValoracionButton.setAttribute("href", `${url}?idOp=${id}`);
+    crearValoracionButton.setAttribute("href", `${url}?idSup=${id}`);
   }
 }
 
