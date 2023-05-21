@@ -48,7 +48,7 @@
 .documentacion {
   flex: 1;
   color: #9c9c9d;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   text-align: center;
   height:30px;
@@ -138,16 +138,20 @@
   opacity: 1;
 }
 .button-filtro {
-
+  
   text-align: center;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 12px;
   letter-spacing: 0.05em;
-  border-radius: 13px;
+  border-radius: 5px;
   padding: 8px 16px;
   border-top: 1px solid #bebdbd;
 }
+.button-filtro:hover{
+    background-color: #71e3ff;
+    color:#014596;
+}
+
 .filtro-activo {
   color: white;
   background-color: #014596;

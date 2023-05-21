@@ -199,7 +199,7 @@ input.b-form-element {
 }
 
 .button {
-  font-size:16px;
+  font-size:12px;
   min-width: 100px;
   max-width: 350px;
   height: 35px;
@@ -228,6 +228,7 @@ input.b-form-element {
 }
 .button:hover {
   background-color: #71e3ff;
+  color:#014596;
 }
 .bluebg {
   background-color: #014596 !important;
