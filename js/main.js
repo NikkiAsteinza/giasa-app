@@ -98,11 +98,11 @@ function printMappedWorkers(mappedWorkers) {
         mediaValoracion = res;
       }
 
-      container.innerHTML += `<a href="${ localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage}?id=${worker.id}&obraActual=${worker.obra_actual}"><div class="b-empleado-main__item unique-row">
+      container.innerHTML += `<a href="${ localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage}?id=${worker.id}&obraActual=${worker.obra_actual}&val=${mediaValoracion}"><div class="b-empleado-main__item unique-row">
         <img class="usuario-imagen" src="../_resources/usuario_giasa.png" alt="" width=30 height=30>  
         <div class="b-empleado-main__nombre-fecha">
           <p class="b-empleado-main__nombre en-filtro">${worker.nombre} ${worker.apellido_1} ${worker.apellido_2}</p>
-          <p class="b-empleado-main__fecha">${worker.id}</p>
+          <p class="b-empleado-main__fecha worker-id-copy">${worker.id}</p>
         </div>
         <div class="b-empleado-main__item-punt">
           <img src="../_resources/star.png" class="star" />

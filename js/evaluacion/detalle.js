@@ -46,6 +46,7 @@ if (localStorage.getItem("token")) {
   const botonAtrasFeedback = document.getElementById("feedbackAtras");
   botonAtrasFeedback.setAttribute("href","./empleado-detalle.html?id="+idOp+"&obraActual="+obraActual)
 
+
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
   res.json().then((res) => {
     console.log(res);
@@ -54,7 +55,21 @@ if (localStorage.getItem("token")) {
     evaluacionValor.innerText = feedback.evaluacion;
   }))
 }
-
+function configureStars() {
+  const stars = document.getElementsByClassName("interactive-star");
+  for (i = 0; i < stars.length; i++) {
+    stars[i].addEventListener("click", () => {
+      if (stars[i].getAttribute("class") === "staroff") {
+        turnYellow(stars[i]);
+      } else {
+        for (j = i * 1; j < stars.length; j++) {
+          turnGray(stars[j]);
+        }
+      }
+    });
+  }
+  const dato = document.getElementById("evaluacion-valor");
+}
 acceptButton.addEventListener("click", async function(){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);

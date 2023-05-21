@@ -8,12 +8,21 @@ const etiquetasP = document.querySelectorAll("p.en-filtro");
 const etiquetasA = document.querySelectorAll(".link-detalle");
 
 let mappedFeedback, mappedSite, cliente, obra;
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 
 if (localStorage.getItem("token")) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-
+  configureStars();
   const id = urlParams.get("id");
+  const workerIdData = document.getElementById("workerId");
+  workerIdData.innerText = id;
+ const workerIdCopy = document.getElementById('workerIdCopy');
+ workerIdCopy.addEventListener("click", function(){
+      copyContent(id); 
+  })
+
+
+
 
   fetch("http://localhost:8000/operarios/id/" + id).then((res) =>
     res.json().then((res) => {
@@ -50,6 +59,14 @@ if (localStorage.getItem("token")) {
   );
 }
 
+  async function copyContent(text){
+    try {
+      await navigator.clipboard.writeText(text);
+      console.log('Content copied to clipboard');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
 // function toggleCrearValoracionButton(){
 //   const crearValoracionButton = document.getElementById("crear-valoracion");
 
@@ -101,11 +118,24 @@ function printWorkerFeedback(mappedFeedback) {
           </div> -->
         </div>
       </div></a>`;
+
         })
     );
   });
 }
+function configureStars() {
+  const stars = document.getElementsByClassName("interactive-star");
+  media =urlParams.get("val");
+  console.log(media);
+  ceilMedia= Math.ceil(media);
 
+  for (i = 0; i < ceilMedia-1; i++) {
+        stars[i].classList.remove("staroff");
+        stars[i].classList.add("star");
+  }
+  const dato = document.getElementById("evaluacion-valor");
+  dato.innerText = media;
+}
 
 
 botonObra.addEventListener("click", () => {
