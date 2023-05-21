@@ -8,48 +8,57 @@
     <title>Datos empleado</title>
   </head>
   <body class="b-empleado">
-    <header id="header">
-    </header>
+    <header id="header"></header>
     <main class="b-empleado-main" id="admin-container">
-      <img class="b-empleado-main__imagen" src="../_resources/usuario_giasa.png" alt="">
-            <p id="evaluacion-obra" class="b-empleado-main__nombre">Nombre Obra</p> 
-            <div class="b-empleado-main__puntuacion">
-              
-              <div class="staroff"></div>
-              <div class="staroff"></div>
-              <div class="staroff"></div>
-              <div class="staroff"></div>
-              <div class="staroff"></div>
-              <span id="evaluacion-valor" class="b-empleado-main__numerico">4.0</span>
-            </div>
-          <p id="evaluacion-fecha" class="b-empleado-main__fecha">20/12/2019</p>
-          <div class="b-empleado-main__datos"> 
-            <!-- <div>
+      <img
+        class="b-empleado-main__imagen"
+        src="../_resources/usuario_giasa.png"
+        alt=""
+      />
+      <p id="evaluacion-obra" class="b-empleado-main__nombre">Nombre Obra</p>
+      <div class="b-empleado-main__puntuacion">
+        <div class="staroff"></div>
+        <div class="staroff"></div>
+        <div class="staroff"></div>
+        <div class="staroff"></div>
+        <div class="staroff"></div>
+        <span id="evaluacion-valor" class="b-empleado-main__numerico">4.0</span>
+      </div>
+      <p id="evaluacion-fecha" class="b-empleado-main__fecha">20/12/2019</p>
+      <div class="b-empleado-main__datos">
+        <!-- <div>
           <p class="b-empleado-main__clave">Obra</p>
           <p class="b-empleado-main__valor">Gomez de Ulla</p>
             </div>
             <div class="line"></div> -->
-            <div>
-          <p class="b-empleado-main__clave">Cliente</p>
-          <p id="evaluacion-cliente" class="b-empleado-main__valor">Antonio Benito</p>
-            </div>
-          </div>
-          <div class="b-empleado-main__observaciones">
-          <p class="b-empleado-main__clave">Observaciones</p>
-          <!-- <span class="show-icon" >
+        <div id="detalle-main" class="d-detalle-main">
+          <p id = "clave-cliente" class="b-empleado-main__clave">Cliente</p>
+          <p id="evaluacion-cliente" class="b-empleado-main__valor">
+            Antonio Benito
+          </p>
+        </div>
+      </div>
+      <div class="b-empleado-main__observaciones">
+        <p class="b-empleado-main__clave">Observaciones</p>
+        <!-- <span class="show-icon" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="none" xmlns:v="https://vecta.io/nano"><path d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z" fill="#014596"/></svg>
           </span> -->
-          <div class="textarea-container">
-          <textarea id="evaluacion-descripcion" class="b-empleado-main__observaciones__texto" resize="none"></textarea>
+        <div class="textarea-container">
+          <textarea
+            id="evaluacion-descripcion"
+            class="b-empleado-main__observaciones__texto"
+            resize="none"
+          ></textarea>
         </div>
-        </div>
-        
-        <div class="buttons-wrapper">
-        <button class="button back-button"><a id="feedbackAtras" href="./empleado-detalle.html"> Atrás</a></button>
+      </div>
+
+      <div class="buttons-wrapper">
+        <button class="button back-button">
+          <a id="feedbackAtras" href="./empleado-detalle.html"> Atrás</a>
+        </button>
         <button id="acceptButton" class="button accept-button">Aceptar</button>
         <!-- <button class="back-button">Siguiente</button> -->
       </div>
-      
     </main>
   </body>
 

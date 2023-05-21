@@ -1,5 +1,6 @@
 const detalleContainer = document.getElementById("worker-feedback-list");
 const nombreContainer = document.querySelector(".b-empleado-main__nombre");
+
 const goToPage = "feedback_detalle.html";
 const url = "./" + goToPage;
 
