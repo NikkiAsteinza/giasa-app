@@ -6,6 +6,7 @@
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  display:none;
 }
 
 /* Track */
@@ -56,12 +57,9 @@ a {
 }
 
 .cerrar-sesion {
-  width: fit-content;
   position: fixed;
-  top: 10px;
+  top: 5px;
   right: 10px;
-  color: #014596;
-  font-size: 10px;
 }
 .cerrar-sesion:hover{
   background-color:rgb(156, 9, 9) !important;
@@ -164,38 +162,36 @@ a {
 .b-form-element {
   box-sizing: border-box;
   color: #1d1d1d;
-  width: 80%;
-  margin: 0 auto;
+
+  /* margin: 0 auto; */
   display: inline-block;
-  height: 30px;
+  /* height: 30px; */
   display: grid;
   align-content: center;
-  font-size: 14px;
+  /* font-size: 14px; */
   line-height: 30px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   border: 3px solid white;
-  max-width: 350px;
+  /* max-width: 350px; */
   margin: 20px auto;
   font-size: 18px;
   padding: 10px;
-  /* padding: 5px 10px; */
+  /* padding: 5px 10px;
 }
 
 input.b-form-element {
   text-align: left;
   background-color: white;
   /* ajuste del ancho para el responsive  */
-  width: 70vw;
+  /* min-width: 200px; */
+  width: 350px;
+  height: 45px;
   border-radius: 20px;
 
   box-shadow: 0 7px 7px -5px rgba(0, 0, 0, 0.5);
   transition: 300ms ease-in-out;
 }
-.search {
-  border: white;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 18px;
-}
+
 .b-form-element:focus {
   background-color: white;
   outline: none;
@@ -203,18 +199,25 @@ input.b-form-element {
 }
 
 .button {
-  padding: 5px 10px;
-  max-width: 150px;
+  font-size:16px;
+  min-width: 100px;
+  max-width: 350px;
+  height: 35px;
   box-sizing: border-box;
   cursor: pointer;
   border: none;
   border-radius: 25px;
   background-color: rgba(236, 236, 236, 0.7);
   color: #014596;
+  line-height: 35px;
   font-weight: 700;
   text-align: center;
   box-shadow: 0 7px 7px -5px rgba(0, 0, 0, 0.5);
   transition: all 0.4s;
+  display: block;
+  margin: auto;
+  border: 1px solid #014596;
+  padding: 0 15px;
 }
 .accept-button{
   display: none;
@@ -224,10 +227,7 @@ input.b-form-element {
   border: 3px solid #71e3ff;
 }
 .button:hover {
-  background-color: #014596;
-  color: white;
-  border-color: white;
-  cursor: pointer;
+  background-color: #71e3ff;
 }
 .bluebg {
   background-color: #014596 !important;
@@ -282,10 +282,8 @@ input.b-form-element {
 .usuario-imagen {
   object-fit: contain;
   display: inline-block;
-  height: 100%;
-  width: auto;
-  padding-bottom: 7px;
-  z-index: 999;
+  border: 2px solid #014596;
+  border-radius: 50%;
 }
 .empleado-valoracion {
   text-align: right;
@@ -301,13 +299,14 @@ input.b-form-element {
   background-image: url("../_resources/star.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 20px;
+  width: 30px;
+
 }
 .staroff {
   background-image: url("../_resources/star_gray.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 20px;
+  width: 30px;
 }
 .hidden {
   display: none;
@@ -355,16 +354,14 @@ footer {
   .b-empleado-main__imagen {
     right: auto;
   }
-  .b-empleado-main__filtros{
-    width: 66%
-  }
+
   .b-empleado-main__switch-wrapper{
     width: 50%
   }
   .b-empleado-main__items {
     border-bottom-right-radius: 1vw;
     
-    width: 70%;
+
 }
 }
 @media (min-width: 360px) {
@@ -396,9 +393,7 @@ footer {
     border-top: 50px solid #014596;
     border-bottom: 50px solid #014596;
   }
-  .search {
-    width: 40%;
-  }
+
   .main {
     height: 65%;
 
@@ -414,9 +409,6 @@ footer {
   .carta-empleado {
     margin: 30px 40px;
     padding: 1.7%;
-  }
-  .star {
-    width: 30px;
   }
   .carta-header {
     grid-template-rows: 50% 50%;
@@ -440,20 +432,8 @@ footer {
   .b-empleado-main__switch-wrapper {
     width: 40%;
   }
-  .b-empleado-main__items {
-    width: 50%;
-  }
-  
-  .back-button {
-    display: flex;
-    margin: auto;
-    
-    border: 1px solid #014596;
-    border-radius: 16px;
-    padding: 10px 25px;
-    
-    
-  }
+
+
   
   .back-icon {
     display: none;
@@ -468,21 +448,10 @@ footer {
   .b-empleado-main__comentarios {
     width: 60%;
   }
-  .staroff{
-    width: 30px;
-  }
+
   .buttons-wrapper{
     display: flex;
     
-  }
-  .cerrar-sesion {
-  
-    height: 3%;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    color: #014596;
-    font-size: 12px;
   }
 }
 

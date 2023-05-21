@@ -1,7 +1,7 @@
 const mainContainer = document.getElementById("main-container");
 if (!localStorage.getItem("token")) {
   mainContainer.innerHTML =
-    '<form id="login-form"><div><input id="user" type="text" placeholder="usuario" class="b-form-element"/><input id="password" type="password" placeholder="contraseña" class="b-form-element"/></div><a id="login-button" class="b-form-element button">Login</a></form>';
+    '<form id="login-form"><div><input id="user" type="text" placeholder="usuario" class="b-form-element"/><input id="password" type="password" placeholder="contraseña" class="b-form-element"/></div></form><a id="login-button" class="button">Login</a>';
   const loginButton = document.getElementById("login-button");
   loginButton.addEventListener("click", tryLogin);
 } else {

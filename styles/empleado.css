@@ -22,7 +22,7 @@
 }
 .b-empleado-main {
   padding-top: 60px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@
   border-top-left-radius: 50vw;
   border-bottom-right-radius: 50vw;
   background-color: white;
-  height: 78vh;
+  height: 80vh;
   overflow: hidden;
 }
 .b-empleado-main__switch-wrapper {
@@ -48,37 +48,48 @@
 .documentacion {
   flex: 1;
   color: #9c9c9d;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   text-align: center;
+  height:30px;
+  line-height: 30px;
 }
 .b-empleado-main__switch {
   text-align: center;
   flex: 1;
   border-radius: 5px;
-  color: #014596;
-  background-color: white;
+  color: white;
+  background-color: #014596;
   font-size: 12px;
   font-weight: 700;
+  height: 30px;
+  line-height: 30px;
 }
 .b-empleado-main__filtros {
-  padding: 20px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  border-top: 1px solid #bebdbd;
-  width: 75%;
+  box-sizing: border-box;
+  width: 1024px;
+  max-width: 90%;
+  height: 35px;
 }
 .b-empleado-main__items {
-  border-bottom-right-radius: 20vw;
   overflow-y: auto;
   height: 75%;
-  width: 90%;
+  box-sizing: border-box;
+  width: 1024px;
+  max-width:90%;
+  border-top: 1px solid #bebdbd;
+  border-bottom: 2px solid #bebdbd;
+  padding: 20px;
+  margin-bottom:20px;
 }
 .b-empleado-main__item {
   display: grid;
-  grid-template-columns: 56px auto 80px;
+  grid-template-columns: 45px auto 45px;
   padding: 0 10px;
   align-items: center;
   border: 1px solid #dadada;
@@ -92,13 +103,14 @@
 .b-empleado-main__item-punt {
   border-radius: 10px;
   background-color: #014596;
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-left: 5px;
+  position:relative;
+  left:calc(100% - 45px);
 }
 .b-empleado-main__nombre-fecha {
   margin-left: 15px;

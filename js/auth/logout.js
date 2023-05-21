@@ -2,7 +2,7 @@
 if(localStorage.getItem("token")) {
     const header = document.getElementById("header");
 
-    header.innerHTML += '<button id="logout" class="button cerrar-sesion"><span>Salir</span></button>';
+    header.innerHTML += '<button id="logout" class="button cerrar-sesion">Salir</button>';
     const logoutButton = document.getElementById("logout");
     
     function logout(){
