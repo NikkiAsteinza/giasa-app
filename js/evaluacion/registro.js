@@ -22,13 +22,13 @@ if (detector) {
   console.log("Estás en Móvil");
 } else console.log("Estás en PC");
 
-const stars = document.querySelectorAll("div>span");
+const stars = document.getElementsByClassName("interactive-star");
 const star1 = stars[0];
 const star2 = stars[1];
 const star3 = stars[2];
 const star4 = stars[3];
 const star5 = stars[4];
-const dato= stars[5]
+const dato= document.getElementById("evaluacion-valor")
 //Cambia de estrella gris a dorada de manera ordenada al hacer click//
 star1.addEventListener("click", () => {
   if (star1.getAttribute("class") === "staroff") {
@@ -87,33 +87,3 @@ function changeNumber(){
  let starsOn=document.getElementsByClassName("star")
  dato.textContent=`${starsOn.length}.0`
 }
-
-const acceptButton = document.getElementById('acceptButton');
-
-acceptButton.addEventListener("click", async function(){
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const obra = urlParams.get("obraActual");
-  const operario = urlParams.get("id");
-  
-
-  console.log("accept button clicked")
-  const res = await fetch("http://localhost:8000/evaluaciones", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      id_operario:operario,
-      evaluacion:document.getElementById("evaluacion-valor").value,
-      descripcion: document.getElementById("evaluacion-descripcion").value,
-      id_supervisor: localStorage.getItem("id"),
-      id_obra: obra
-    }),
-  });
-
-  const response = await res.json();
-  console.log(response)
-  location.reload();
-})

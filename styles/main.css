@@ -25,6 +25,16 @@ a {
 #logo {
   max-width: 200px;
 }
+#signedInUser{
+  text-align: left;
+    position: fixed;
+    top: 13px;
+    left: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
 .cerrar-sesion {
   width: fit-content;
   position: fixed;
@@ -32,6 +42,10 @@ a {
   right: 10px;
   color: #014596;
   font-size: 10px;
+}
+.cerrar-sesion:hover{
+  background-color:rgb(156, 9, 9) !important;
+  color:white !important;
 }
 #login-form {
   width: 100%;
@@ -260,10 +274,7 @@ input.b-form-element {
   height: 70px;
 }
 .empleado-estrellas {
-  max-width: 100%;
-  width: 10%;
   display: grid;
-
   padding-left: 5px;
 }
 .star {
@@ -291,6 +302,10 @@ input.b-form-element {
   display: flex;
   justify-content: end;
   padding-right: 5px;
+}
+
+.empleado-nombre a {
+  line-height:50px;
 }
 
 .empleado-nombre a:hover {
@@ -346,10 +361,7 @@ footer {
 }
 
 @media (min-width: 720px) and (min-height: 600px) {
-  .b-full {
-    margin: 20px 10% 0 10%;
-    width: auto;
-  }
+
   .data-container-background {
     border-top-left-radius: 15vw;
     border-bottom-right-radius: 10vw;
@@ -387,7 +399,6 @@ footer {
     width: 30px;
   }
   .carta-header {
-    width: 90%;
     grid-template-rows: 50% 50%;
   }
   .unique-row {
@@ -413,9 +424,6 @@ footer {
     width: 50%;
   }
   
-  footer {
-    display: none;
-  }
   .back-button {
     display: flex;
     margin: auto;
@@ -466,10 +474,6 @@ footer {
   .carta-empleado {
     margin: 30px 50px;
     padding: 1.5%;
-  }
-  .b-empleado-main{
-   width: 100%;
-    margin: 5vh auto 0 auto;
   }
   
 }

@@ -1,11 +1,14 @@
 const textarea = document.querySelector('textarea');
+const acceptButton = document.getElementById('acceptButton');
 
+if(localStorage.getItem("rol")=="no-admin"){
+  textarea.addEventListener('focus', function() {
+    adjustHeight(this);
+    acceptButton.className +=" back-button"
+    acceptButton.style.display='flex';
+  });
+}
 
-// textarea.addEventListener('focus', function() {
-//   adjustHeight(this);
-//   acceptButton.className +=" back-button"
-//   acceptButton.style.display='flex';
-// });
 
 
 function adjustHeight(textarea) {
@@ -19,8 +22,11 @@ function adjustHeight(textarea) {
 if (localStorage.getItem("token")) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
+  
   const id = urlParams.get("id");
-
+  const obraActual = urlParams.get("obraActual");
+  const idOp = urlParams.get("idOp");
+  
   console.log(id);
   const feedbackCliente = urlParams.get("cliente");
   const feedbackObra = urlParams.get("obra");
@@ -38,7 +44,7 @@ if (localStorage.getItem("token")) {
   const evaluacionValor = document.getElementById("evaluacion-valor");
 
   const botonAtrasFeedback = document.getElementById("feedbackAtras");
-  botonAtrasFeedback.setAttribute("href","./empleado-detalle.html?id="+id)
+  botonAtrasFeedback.setAttribute("href","./empleado-detalle.html?id="+idOp+"&obraActual="+obraActual)
 
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
   res.json().then((res) => {
@@ -48,3 +54,31 @@ if (localStorage.getItem("token")) {
     evaluacionValor.innerText = feedback.evaluacion;
   }))
 }
+
+acceptButton.addEventListener("click", async function(){
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const obra = urlParams.get("obraActual");
+  const operario = urlParams.get("id");
+  
+
+  console.log("accept button clicked")
+  const res = await fetch("http://localhost:8000/evaluaciones", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id_operario:operario,
+      evaluacion:document.getElementById("evaluacion-valor").value,
+      descripcion: document.getElementById("evaluacion-descripcion").value,
+      id_supervisor: localStorage.getItem("id"),
+      id_obra: obra
+    }),
+  });
+
+  const response = await res.json();
+  console.log(response)
+  location.reload();
+})

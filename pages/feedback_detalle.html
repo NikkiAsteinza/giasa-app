@@ -9,9 +9,6 @@
   </head>
   <body class="b-empleado">
     <header id="header">
-      <a href="javascript: history.back()" class="back-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="none" xmlns:v="https://vecta.io/nano"><path d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z" fill="#fff"/></svg>
-    </a>
     </header>
     <main class="b-empleado-main" id="admin-container">
       <img class="b-empleado-main__imagen" src="../_resources/usuario_giasa.png" alt="">
@@ -43,25 +40,20 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="none" xmlns:v="https://vecta.io/nano"><path d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z" fill="#014596"/></svg>
           </span> -->
           <div class="textarea-container">
-          <textarea readonly id="evaluacion-descripcion" class="b-empleado-main__observaciones__texto" resize="none">
-            
-          </textarea>
+          <textarea id="evaluacion-descripcion" class="b-empleado-main__observaciones__texto" resize="none"></textarea>
         </div>
         </div>
         
         <div class="buttons-wrapper">
         <button class="button back-button"><a id="feedbackAtras" href="./empleado-detalle.html"> Atrás</a></button>
-        <button class="button accept-button">Aceptar</button>
+        <button id="acceptButton" class="button accept-button">Aceptar</button>
         <!-- <button class="back-button">Siguiente</button> -->
       </div>
       
     </main>
-    <footer>
-      <!-- <button class="footer__button">Cancelar</button> -->
-      <!-- <button class="footer__button">Aceptar</button> -->
-
-    </footer>
   </body>
+
   <script src="../js/evaluacion/detalle.js"></script>
+  <script src="../js/evaluacion/registro.js"></script>
   <script src="../js/auth/logout.js"></script>
 </html>

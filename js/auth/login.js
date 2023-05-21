@@ -1,5 +1,4 @@
 const mainContainer = document.getElementById("main-container");
-
 if (!localStorage.getItem("token")) {
   mainContainer.innerHTML =
     '<form id="login-form"><div><input id="user" type="text" placeholder="usuario" class="b-form-element"/><input id="password" type="password" placeholder="contraseña" class="b-form-element"/></div><a id="login-button" class="b-form-element button">Login</a></form>';
@@ -27,6 +26,7 @@ async function tryLogin() {
   localStorage.setItem("token", response.token);
   localStorage.setItem("rol", response.rol);
   localStorage.setItem("id", response.id);
+  localStorage.setItem("name", document.getElementById("user").value);
   console.log(response);
   goToMain();
 }

@@ -3,6 +3,7 @@
   grid-template-rows: 60px auto 60px;
   background-color: #014596;
   height: 100vh;
+  overflow: hidden;
 }
 .b-empleado__header {
   position: relative;
@@ -20,15 +21,18 @@
   opacity: 1;
 }
 .b-empleado-main {
-  padding-top: 10vh;
+  padding-top: 60px;
+  padding-bottom: 50px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   border-top-left-radius: 50vw;
   border-bottom-right-radius: 50vw;
   background-color: white;
+  height: 78vh;
+  overflow: hidden;
 }
 .b-empleado-main__switch-wrapper {
   background-color: #d9d9d9;
@@ -69,11 +73,13 @@
 .b-empleado-main__items {
   border-bottom-right-radius: 20vw;
   overflow-y: auto;
-  max-height: 30vh;
+  height: 75%;
   width: 90%;
 }
 .b-empleado-main__item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 56px auto 80px;
+  padding: 0 10px;
   align-items: center;
   border: 1px solid #dadada;
   border-radius: 10px;
@@ -141,15 +147,14 @@
   border: 1px solid #9c9c9d;
 }
 .b-empleado-main__imagen {
-  position: absolute;
+  position: fixed;
   width: 100px;
-  right: 5px;
-  top: -50px;
+  right: calc(100%-50px);
+  top: 10px;
   border: 2px solid white;
   border-radius: 50%;
 }
 .b-empleado-main__nombre {
-  text-align: center;
   color: #014596;
   font-size: 18px;
   font-weight: 700;
@@ -170,7 +175,7 @@
   font-size: 12px;
   font-weight: 500;
   color: #c8c8c8;
-  text-align: center;
+  text-align: left;
 }
 .b-empleado-main__datos {
   border-bottom: 2px solid #9bb3c9;
@@ -178,7 +183,7 @@
   margin: 40px 0 30px 0;
   display: flex;
   flex-direction: row;
-  text-align: center;
+  text-align: left;
   width: 85%;
   justify-content: center;
 }
@@ -262,7 +267,5 @@
     max-height: 25vh;
   }
 
-  .b-empleado-main__items {
-    max-height: 40vh;
-  }
+
 }

@@ -2,6 +2,11 @@ const detalleContainer = document.getElementById("worker-feedback-list");
 const nombreContainer = document.querySelector(".b-empleado-main__nombre");
 const goToPage = "feedback_detalle.html";
 
+const botonObra = document.getElementById("obra");
+const botonCliente = document.getElementById("cliente");
+const etiquetasP = document.querySelectorAll("p.en-filtro");
+const etiquetasA = document.querySelectorAll(".link-detalle");
+
 let mappedFeedback, mappedSite, cliente, obra;
 
 if (localStorage.getItem("token")) {
@@ -70,7 +75,7 @@ function printWorkerFeedback(mappedFeedback) {
           obra = res;
           console.log(obra);
           const url = "./" + goToPage;
-          detalleContainer.innerHTML += `<a href="${url}?id=${feedback.id}&idOp=${feedback.id_operario}&cliente=${obra.cliente}&obra=${obra.nombre}"><div data-cliente="${obra.cliente}" data-obra="${obra.nombre}" class="b-empleado-main__item unique-row">
+          detalleContainer.innerHTML += `<a href="${url}?id=${feedback.id}&idOp=${feedback.id_operario}&cliente=${obra.cliente}&obra=${obra.nombre}&obraActual=${obra._id}"><div data-cliente="${obra.cliente}" data-obra="${obra.nombre}" class="b-empleado-main__item unique-row">
           <div class="b-empleado-main__item-punt">
             <img src="../_resources/star.png" class="star" />
             <p class="b-empleado-main__valor white">${feedback.evaluacion}</p>
@@ -101,55 +106,7 @@ function printWorkerFeedback(mappedFeedback) {
   });
 }
 
-// function getCurrentSite(idSupervisor) {
-//   fetch("http://localhost:8000/obras/sup/" + idSupervisor).then((res) =>
-//     res.json().then((res) => {
-//       obra = res;
-//       console.log(obra);
-//       fetch("http://localhost:8000/clientes/nombre/" + obra.cliente).then(
-//         (res2) =>
-//           res2.json().then((res2) => {
-//             cliente = res2;
-//             console.log(cliente);
-//             mappedFeedback.forEach((feedbackEntry) => {
-//               const url = "./"+goToPage;
-//               detalleContainer.innerHTML += `<a href="${url}?id=${feedbackEntry.id}&idOp=${feedbackEntry.id_operario}&cliente=${cliente.nombre}&obra=${obra.nombre}"><div data-cliente="${cliente.nombre}" data-obra="${obra.nombre}" class="b-empleado-main__item unique-row">
-//                 <div class="b-empleado-main__item-punt">
-//                   <img src="../_resources/star.png" class="star" />
-//                   <p class="b-empleado-main__valor white">${feedbackEntry.evaluacion}</p>
-//                 </div>
-//                 <div class="b-empleado-main__nombre-fecha">
-//                   <p class="b-empleado-main__nombre en-filtro">${obra.cliente}</p>
-//                   <p class="b-empleado-main__fecha">${feedbackEntry.fecha}</p>
-//                 </div>
-//                 <!-- <div class="b-empleado-main__link">
-//                   <a href="cliente_detalle.html" ><svg class="b-empleado-main__link--icon"
-//                       xmlns="http://www.w3.org/2000/svg"
-//                       width="16"
-//                       height="30"
-//                       fill="none"
-//                       xmlns:v="https://vecta.io/nano"
-//                     >
-//                       <path
-//                         d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z"
-//                         fill="#fff"
-//                       />
-//                     </svg>
-//                   </a>
-//                 </div> -->
-//               </div>
-//             </div></a>`;
-//             });
-//           })
-//       );
-//     })
-//   );
-// }
 
-const botonObra = document.getElementById("obra");
-const botonCliente = document.getElementById("cliente");
-const etiquetasP = document.querySelectorAll("p.en-filtro");
-const etiquetasA = document.querySelectorAll(".link-detalle");
 
 botonObra.addEventListener("click", () => {
   if (botonObra.classList.contains("filtro-inactivo")) {

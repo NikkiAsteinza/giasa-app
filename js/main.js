@@ -1,9 +1,13 @@
 const empleadoDetallePage = "empleado-detalle.html";
-const empleadoValoracionPage = "valoracion.html";
+const empleadoValoracionPage = "feedback_detalle.html";
 
 const mainContainer = "data-container";
-const buscaOperario=document.getElementById("buscaOperario")
+const buscaOperario=document.getElementById("buscaOperario");
+const nombreUsuario = document.getElementById("signedInUser");
+
 let filteredMappedWorkers, mappedWorkers, mappedFeedback,endPoint,mappedObra;
+
+nombreUsuario.innerText ="Hola "+ camelize(localStorage.getItem("name"));
 
 buscaOperario.addEventListener("input",()=>{
   filterOperariosByName(mappedWorkers, buscaOperario.value)
@@ -40,7 +44,10 @@ if (localStorage.getItem("token")) {
         } 
     }
   }
-
+  function camelize(str) {
+    let firstChar = str[0].toUpperCase();
+    return firstChar+str.slice(1);
+  }
 function getWorkers(endPoint){
   fetch(endPoint).then((res) =>
           res.json().then((res) => {
@@ -90,21 +97,19 @@ function printMappedWorkers(mappedWorkers) {
         console.log(res);
         mediaValoracion = res;
       }
-      const targetUrl = localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage;
-      container.innerHTML += `<a href="${targetUrl}?id=${worker.id}?obraActual=${worker.obra_actual}">
-        <div class="carta-empleado unique-row">
-          <div class="carta-header">
-            <p class="empleado-nombre">${worker.nombre} ${worker.apellido_1} ${worker.apellido_2}</p>
-            <div class="carta-header-valoracion">
-              <div class="empleado-valoracion">${mediaValoracion}</div>
-              <div class="empleado-estrellas">
-                <div class="star"></div>
-              </div>
-            </div>
-          </div>
-          <img class="usuario-imagen" src="../_resources/usuario_giasa.png" alt="">
+
+      container.innerHTML += `<a href="${ localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage}?id=${worker.id}&obraActual=${worker.obra_actual}"><div class="b-empleado-main__item unique-row">
+        <img class="usuario-imagen" src="../_resources/usuario_giasa.png" alt="" width=30 height=30>  
+        <div class="b-empleado-main__nombre-fecha">
+          <p class="b-empleado-main__nombre en-filtro">${worker.nombre} ${worker.apellido_1} ${worker.apellido_2}</p>
+          <p class="b-empleado-main__fecha">${worker.id}</p>
         </div>
-        </a>`;
+        <div class="b-empleado-main__item-punt">
+          <img src="../_resources/star.png" class="star" />
+          <p class="b-empleado-main__valor white">${mediaValoracion}</p>
+        </div>
+      </div>
+    </div></a>`;
     })
   );});
 }

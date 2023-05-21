@@ -9,20 +9,6 @@
   </head>
   <body class="b-empleado">
     <header id="header">
-      <a href="javascript: history.back()" class="back-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="30"
-          fill="none"
-          xmlns:v="https://vecta.io/nano"
-        >
-          <path
-            d="M.586 3.666c-.781-.839-.781-2.199 0-3.037a1.9 1.9 0 0 1 2.828 0l12 12.886c.757.813.784 2.122.06 2.97L3.414 29.371c-.746.874-2.014.801-2.828 0s-.746-2.188 0-3.062l10.646-11.211L.586 3.666z"
-            fill="#fff"
-          />
-        </svg>
-      </a>
     </header>
     <main class="b-empleado-main" id="admin-container">
       <img
@@ -33,11 +19,11 @@
 
       <p class="b-empleado-main__nombre">Carlos Fuentes García</p>
       <div class="b-empleado-main__puntuacion">
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="staroff"></div>
+        <div class="interactive-star star"></div>
+        <div class="interactive-star star"></div>
+        <div class="interactive-star star"></div>
+        <div class="interactive-star star"></div>
+        <div class="interactive-star staroff"></div>
         <span class="b-empleado-main__numerico">4.0</span>
       </div>
 
@@ -50,6 +36,9 @@
         <button id="cliente" class="button-filtro filtro-inactivo">
           Cliente
         </button>
+        <button id="nuevoRegistro" class="button-filtro filtro-inactivo">
+          Nueva valoracion
+        </button>
       </div>
     
       <div id="worker-feedback-list" class="b-empleado-main__items">
@@ -60,10 +49,6 @@
         <a href="./main.html"> Atrás</a>
       </button>
     </main>
-    <footer>
-      <!-- <button class="footer__button">Cancelar</button> -->
-      <button class="footer__button">Aceptar</button>
-    </footer>
   </body>
   <script src="../js/empleados/detalle.js"></script>
   <script src="../js/auth/logout.js"></script>
