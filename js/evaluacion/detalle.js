@@ -1,6 +1,10 @@
 const textarea = document.querySelector("textarea");
 const acceptButton = document.getElementById("acceptButton");
 const evaluacionValor = document.getElementById("evaluacion-valor");
+const pEmpleadoMainClave = document.getElementById("clave-cliente");
+const pEmpleadoMainValor = document.getElementById("evaluacion-cliente");
+const evaluacionFecha=document.getElementById("evaluacion-fecha");
+evaluacionFecha.innerText=new Date().toLocaleDateString();
 
 if (
   localStorage.getItem("rol") == "no_admin" ||
@@ -8,8 +12,8 @@ if (
 ) {
   textarea.addEventListener("focus", function () {
     adjustHeight(this);
-    acceptButton.className += " back-button";
-    acceptButton.style.display = "flex";
+    
+    acceptButton.classList.remove("accept-button");
   });
 }
 
@@ -34,6 +38,8 @@ if (localStorage.getItem("token")) {
 
   console.log(id);
   const feedbackCliente = urlParams.get("cliente");
+  
+  
   const feedbackObra = urlParams.get("obra");
 
   const evaluacionObra = document.getElementById("evaluacion-obra");
@@ -74,7 +80,7 @@ if (localStorage.getItem("token")) {
 }
 function configureStars() {
   const stars = document.getElementsByClassName("interactive-star");
-  console.log(stars);
+  
   for (let i = 0; i < stars.length; i++) {
     stars[i].addEventListener("click", () => {
       if (stars[i].getAttribute("class").includes("staroff")) {
@@ -90,8 +96,7 @@ function configureStars() {
       }
     });
   }
-  // const dato = document.getElementById("evaluacion-valor");
-  // console.log(dato);
+  
 }
 function turnYellow(star) {
   star.classList.remove("staroff");
@@ -145,9 +150,9 @@ if (
   localStorage.getItem("rol") == "admin" ||
   localStorage.getItem("rol") == "dev"
 ) {
-  const pEmpleadoMainClave = document.getElementById("clave-cliente");
+  
   pEmpleadoMainClave.classList.add("oculto");
-  const pEmpleadoMainValor = document.getElementById("evaluacion-cliente");
+  
   pEmpleadoMainValor.classList.add("oculto");
 
   const divDetalleMain = document.getElementById("detalle-main");
@@ -200,9 +205,10 @@ if (
       });
     })
     .catch((error) => console.log(error));
-} else {
-  const pEmpleadoMainClave = document.getElementById("clave-cliente");
-  pEmpleadoMainClave.classList.remove("oculto");
-  const pEmpleadoMainValor = document.getElementById("evaluacion-cliente");
-  pEmpleadoMainValor.classList.remove("oculto");
+} 
+else {
+  
+  pEmpleadoMainClave.classList.add("oculto");
+  
+  pEmpleadoMainValor.classList.add("oculto");
 }
