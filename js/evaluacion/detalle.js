@@ -1,5 +1,6 @@
 const textarea = document.querySelector('textarea');
 const acceptButton = document.getElementById('acceptButton');
+const evaluacionValor = document.getElementById("evaluacion-valor");
 
 if(localStorage.getItem("rol")=="no_admin" || localStorage.getItem("rol") == "admin"){
   textarea.addEventListener('focus', function() {
@@ -9,7 +10,9 @@ if(localStorage.getItem("rol")=="no_admin" || localStorage.getItem("rol") == "ad
   });
 }
 
-
+if(localStorage.getItem("rol")=="no_admin"){
+  configureStars()
+}
 
 function adjustHeight(textarea) {
   textarea.style.border = '1px solid #ccc';
@@ -41,7 +44,7 @@ if (localStorage.getItem("token")) {
   nombreObra.innerText = feedbackObra;
   
   const evaluacionDescripcion = document.getElementById("evaluacion-descripcion");
-  const evaluacionValor = document.getElementById("evaluacion-valor");
+  
 
   const botonAtrasFeedback = document.getElementById("feedbackAtras");
   botonAtrasFeedback.setAttribute("href","./empleado-detalle.html?id="+idOp+"&obraActual="+obraActual)
@@ -63,20 +66,40 @@ if (localStorage.getItem("token")) {
 }
 function configureStars() {
   const stars = document.getElementsByClassName("interactive-star");
-  for (i = 0; i < stars.length; i++) {
+  console.log(stars);
+  for (let i = 0; i < stars.length; i++) {
     stars[i].addEventListener("click", () => {
-      if (stars[i].getAttribute("class") === "staroff") {
-        turnYellow(stars[i]);
+      if (stars[i].getAttribute("class").includes("staroff")) {
+        for (let j=0; j<=i; j++) {
+          turnYellow(stars[j]);
+        }
+        evaluacionValor.innerText = i+1;
       } else {
-        for (j = i * 1; j < stars.length; j++) {
+        for (let j = stars.length-1; j > i; j--) {
           turnGray(stars[j]);
         }
+        evaluacionValor.innerText = i+1;
       }
     });
   }
-  const dato = document.getElementById("evaluacion-valor");
+  // const dato = document.getElementById("evaluacion-valor");
+  // console.log(dato);
+  
 }
+function turnYellow(star) {
+  star.classList.remove("staroff");
+  star.classList.add("star");
+  
+}
+
+function turnGray(star) {
+  star.classList.remove("star");
+  star.classList.add("staroff");
+  
+}
+
 acceptButton.addEventListener("click", async function(){
+  
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
@@ -102,7 +125,7 @@ acceptButton.addEventListener("click", async function(){
     },
     body: JSON.stringify({
       id_operario:operario,
-      evaluacion:document.getElementById("evaluacion-valor").value,
+      evaluacion:parseInt(evaluacionValor.textContent, 10),
       descripcion: document.getElementById("evaluacion-descripcion").value,
       id_supervisor: localStorage.getItem("id"),
       id_obra: obra
