@@ -21,9 +21,10 @@ async function tryLogin() {
       password: document.getElementById("password").value,
     }),
   });
-
+console.log(res.status);
   const response = await res.json();
-  if (response.status===200 && response.token){
+  console.log(res.status,  response.token);
+  if (res.status===200 && response.token){
   localStorage.setItem("token", response.token);
   localStorage.setItem("rol", response.rol);
   localStorage.setItem("id", response.id);
