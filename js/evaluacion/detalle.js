@@ -52,7 +52,7 @@ if (localStorage.getItem("token")) {
   const botonAtrasFeedback = document.getElementById("feedbackAtras");
   botonAtrasFeedback.setAttribute(
     "href",
-    "./empleado-detalle.html?id=" + idOp + "&obraActual=" + obraActual
+    "./main.html?id=" + idOp + "&obraActual=" + obraActual
   );
 
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
