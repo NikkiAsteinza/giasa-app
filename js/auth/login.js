@@ -23,12 +23,19 @@ async function tryLogin() {
   });
 
   const response = await res.json();
+  if (response.status===200 && response.token){
   localStorage.setItem("token", response.token);
   localStorage.setItem("rol", response.rol);
   localStorage.setItem("id", response.id);
   localStorage.setItem("name", document.getElementById("user").value);
   console.log(response);
-  goToMain();
+  goToMain();}
+  else {
+    const errorMessage = document.createElement("div");
+    errorMessage.textContent = "Usuario y/o contraseña incorrectos";
+    errorMessage.style.color = "red";
+    mainContainer.appendChild(errorMessage);
+  }
 }
 function goToMain(){
   const currentPath = window.location.pathname;
