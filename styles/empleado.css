@@ -21,7 +21,7 @@
   opacity: 1;
 }
 .b-empleado-main {
-  padding-top: 60px;
+  padding-top: 30px;
   padding-bottom: 30px;
   position: relative;
   display: flex;
@@ -181,7 +181,7 @@
 }
 .b-empleado-main__puntuacion {
   display: flex;
-
+margin-top: 30px;
   width: 100%;
   justify-content: center;
   gap: 5px;
@@ -273,7 +273,7 @@
   box-shadow: 2px 2px 2px #c5c5c5, -2px -2px 2px #ffffff;
 }
 .buttons-wrapper {
-  display: none;
+  display: flex;
   gap: 10px;
   width: auto;
   margin: auto;

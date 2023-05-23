@@ -7,9 +7,14 @@ if(localStorage.getItem("token")) {
     
     function logout(){
     
+        
         console.log("logout")
         localStorage.removeItem("token");
-        window.location.href ="../index.html";
+        if (window.location.href.includes("index")){
+            
+            location.reload();
+        } else 
+        {window.location.href ="../index.html";}
     
     }
     logoutButton.addEventListener('click',logout);
