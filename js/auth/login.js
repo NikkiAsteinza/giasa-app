@@ -1,4 +1,10 @@
+import { logout } from './logout.js';
 const mainContainer = document.getElementById("main-container");
+function goToMain() {
+  const currentPath = window.location.pathname;
+  const newPath = currentPath.replace(/index\.html$/, "pages/main.html");
+  window.location.href = newPath;
+}
 if (!localStorage.getItem("token")) {
   mainContainer.innerHTML =
     '<form id="login-form"> <div><input id="user" type="text" placeholder="usuario" class="b-form-element"/><input id="password" type="password" placeholder="contraseña" class="b-form-element"/></div></form><a id="login-button" class="button">Login</a><div id="error-message"></div>';
@@ -7,7 +13,9 @@ if (!localStorage.getItem("token")) {
   loginButton.addEventListener("click", tryLogin);
 } else {
   console.log("signed id");
-  //goToMain();
+  mainContainer.innerHTML ='<h2>YA HAS INICIADO SESIÓN</h2><div class="buttons-wrapper"><button class="button" id="continuar">Continuar</button></div>'
+  const continuar = document.getElementById("continuar");
+  continuar.addEventListener("click", goToMain)
 }
 
 async function tryLogin() {
@@ -41,8 +49,4 @@ async function tryLogin() {
     
   }
 }
-function goToMain() {
-  const currentPath = window.location.pathname;
-  const newPath = currentPath.replace(/index\.html$/, "pages/main.html");
-  window.location.href = newPath;
-}
+

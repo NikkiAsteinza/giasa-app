@@ -82,7 +82,11 @@ a {
   grid-gap: 50%;
   padding-top: 10%;
 }
-
+.data-container > h2{
+  color: white;
+  text-align: center;
+  margin-bottom: 5vh;
+}
 .b-full {
   box-sizing: border-box;
   margin: 20px auto 0 auto;
