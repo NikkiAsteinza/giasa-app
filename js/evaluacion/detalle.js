@@ -10,6 +10,7 @@ if (
   localStorage.getItem("rol") == "no_admin" ||
   localStorage.getItem("rol") == "admin"
 ) {
+  textarea.addEventListener("input", adjustHeight)
   textarea.addEventListener("focus", function () {
     adjustHeight(this);
     

@@ -61,10 +61,11 @@ a {
   margin-top: 20px;
 }
 
-.cerrar-sesion {
+#logout {
   position: fixed;
   top: 5px;
   right: 10px;
+  min-width: 70px;
 }
 .cerrar-sesion:hover{
   background-color:rgb(156, 9, 9) !important;
