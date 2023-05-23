@@ -3,18 +3,20 @@ const acceptButton = document.getElementById("acceptButton");
 const evaluacionValor = document.getElementById("evaluacion-valor");
 const pEmpleadoMainClave = document.getElementById("clave-cliente");
 const pEmpleadoMainValor = document.getElementById("evaluacion-cliente");
-const evaluacionFecha=document.getElementById("evaluacion-fecha");
-evaluacionFecha.innerText=new Date().toLocaleDateString();
+const evaluacionFecha = document.getElementById("evaluacion-fecha");
+evaluacionFecha.innerText = new Date().toLocaleDateString();
 
 if (
   localStorage.getItem("rol") == "no_admin" ||
   localStorage.getItem("rol") == "admin"
 ) {
-  textarea.addEventListener("input", adjustHeight)
+  textarea.addEventListener("input", adjustHeight);
   textarea.addEventListener("focus", function () {
     adjustHeight(this);
-    
-    acceptButton.classList.remove("accept-button");
+
+    if (acceptButton.classList.contains("accept-button")) {
+      acceptButton.classList.remove("accept-button");
+    }
   });
 }
 
@@ -39,8 +41,7 @@ if (localStorage.getItem("token")) {
 
   console.log(id);
   const feedbackCliente = urlParams.get("cliente");
-  
-  
+
   const feedbackObra = urlParams.get("obra");
 
   const evaluacionObra = document.getElementById("evaluacion-obra");
@@ -64,14 +65,11 @@ if (localStorage.getItem("token")) {
 
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
     res.json().then((res) => {
-      
       if (!res) {
         feedback = null;
         evaluacionDescripcion.innerText = " ";
         evaluacionValor.innerText = 0;
-        
       } else {
-        
         feedback = res;
         evaluacionDescripcion.innerText = feedback.descripcion;
         evaluacionValor.innerText = feedback.evaluacion;
@@ -81,9 +79,12 @@ if (localStorage.getItem("token")) {
 }
 function configureStars() {
   const stars = document.getElementsByClassName("interactive-star");
-  
+
   for (let i = 0; i < stars.length; i++) {
     stars[i].addEventListener("click", () => {
+      if (acceptButton.classList.contains("accept-button")) {
+        acceptButton.classList.remove("accept-button");
+      }
       if (stars[i].getAttribute("class").includes("staroff")) {
         for (let j = 0; j <= i; j++) {
           turnYellow(stars[j]);
@@ -97,7 +98,6 @@ function configureStars() {
       }
     });
   }
-  
 }
 function turnYellow(star) {
   star.classList.remove("staroff");
@@ -118,7 +118,7 @@ acceptButton.addEventListener("click", async function () {
 
   if (localStorage.getItem("rol") == "no_admin") {
     obra = urlParams.get("obraActual");
-    // console.log("id obra---->", obra);
+
     operario = urlParams.get("id");
   } else {
     const miSelectorO = document.getElementsByClassName("selectorO");
@@ -144,16 +144,16 @@ acceptButton.addEventListener("click", async function () {
 
   const response = await res.json();
   console.log(response);
-  location.reload();
+  window.location.href ="./main.html?id=" + urlParams.get("id") + "&obraActual=" + urlParams.get("obraActual");
+  // location.reload();
 });
 
 if (
   localStorage.getItem("rol") == "admin" ||
   localStorage.getItem("rol") == "dev"
 ) {
-  
   pEmpleadoMainClave.classList.add("oculto");
-  
+
   pEmpleadoMainValor.classList.add("oculto");
 
   const divDetalleMain = document.getElementById("detalle-main");
@@ -206,10 +206,8 @@ if (
       });
     })
     .catch((error) => console.log(error));
-} 
-else {
-  
+} else {
   pEmpleadoMainClave.classList.add("oculto");
-  
+
   pEmpleadoMainValor.classList.add("oculto");
 }
