@@ -97,12 +97,15 @@ function printMappedWorkers(mappedWorkers) {
         console.log(res);
         mediaValoracion = typeof variable === 'string'? res.toLowerCase():res;
       }
-
+      let workerIdCopy = "";
+      if (localStorage.getItem("rol") === "admin") {
+        workerIdCopy = `<p class="b-empleado-main__fecha worker-id-copy">${worker.id}</p>`;
+      }
       container.innerHTML += `<a href="${ localStorage.getItem("rol") === "admin"? empleadoDetallePage : empleadoValoracionPage}?id=${worker.id}&obraActual=${worker.obra_actual}&val=${mediaValoracion}"><div class="b-empleado-main__item unique-row">
         <img width=45 height=45 class="usuario-imagen" src="../_resources/usuario.png" alt="">  
         <div class="b-empleado-main__nombre-fecha">
           <p class="b-empleado-main__nombre en-filtro">${worker.nombre} ${worker.apellido_1} ${worker.apellido_2}</p>
-          <p class="b-empleado-main__fecha worker-id-copy">${worker.id}</p>
+          ${workerIdCopy}
         </div>
         <div class="b-empleado-main__item-punt">
           <img width=20 height=20 src="../_resources/star.png" />
@@ -110,6 +113,9 @@ function printMappedWorkers(mappedWorkers) {
         </div>
       </div>
     </div></a>`;
+   
     })
-  );});
+    
+  );
+});
 }

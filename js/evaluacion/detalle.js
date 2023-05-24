@@ -4,6 +4,7 @@ const evaluacionValor = document.getElementById("evaluacion-valor");
 const pEmpleadoMainClave = document.getElementById("clave-cliente");
 const pEmpleadoMainValor = document.getElementById("evaluacion-cliente");
 const evaluacionFecha = document.getElementById("evaluacion-fecha");
+let botonAtrasUrl="./empleado-detalle.html?id="
 evaluacionFecha.innerText = new Date().toLocaleDateString();
 
 if (
@@ -21,6 +22,7 @@ if (
 }
 
 if (localStorage.getItem("rol") == "no_admin") {
+  botonAtrasUrl="./main.html?id="
   configureStars();
 }
 
@@ -60,7 +62,7 @@ if (localStorage.getItem("token")) {
   const botonAtrasFeedback = document.getElementById("feedbackAtras");
   botonAtrasFeedback.setAttribute(
     "href",
-    "./main.html?id=" + idOp + "&obraActual=" + obraActual
+    botonAtrasUrl + idOp + "&obraActual=" + obraActual
   );
 
   fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>

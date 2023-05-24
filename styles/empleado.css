@@ -169,12 +169,13 @@
   top: 10px;
   border: 2px solid white;
   border-radius: 50%;
+  background-color: #014596;
 }
 .b-empleado-main__nombre {
   color: #014596;
   font-size: 18px;
   font-weight: 700;
-  margin-top: 30px;
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 .en-filtro {
