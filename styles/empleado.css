@@ -175,10 +175,11 @@
   color: #014596;
   font-size: 18px;
   font-weight: 700;
-  margin-top: 5px;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 .en-filtro {
+ margin-top: 5px;
   margin-bottom: 5px;
 }
 .b-empleado-main__puntuacion {
