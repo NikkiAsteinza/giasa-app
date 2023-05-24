@@ -23,7 +23,7 @@ if (
 
 if (localStorage.getItem("rol") == "no_admin") {
   botonAtrasUrl="./main.html?id="
-  configureStars();
+  
 }
 
 function adjustHeight(textarea) {
@@ -34,6 +34,7 @@ function adjustHeight(textarea) {
 }
 
 if (localStorage.getItem("token")) {
+  configureStars();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
