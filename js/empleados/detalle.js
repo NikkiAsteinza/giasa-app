@@ -6,8 +6,8 @@ const url = "./" + goToPage;
 
 const botonObra = document.getElementById("obra");
 const botonCliente = document.getElementById("cliente");
-const etiquetasP = document.querySelectorAll("p.en-filtro");
-const etiquetasA = document.querySelectorAll(".link-detalle");
+
+
 
 let mappedFeedback, mappedSite, cliente, obra;
 const queryString = window.location.search;
@@ -122,31 +122,21 @@ function configureStars() {
 }
 
 botonObra.addEventListener("click", () => {
-  if (botonObra.classList.contains("filtro-inactivo")) {
-    botonObra.classList.remove("filtro-inactivo");
-    botonObra.classList.add("filtro-activo");
-    botonCliente.classList.remove("filtro-activo");
-    botonCliente.classList.add("filtro-inactivo");
-    etiquetasP.forEach((p) => {
-      p.textContent = "Nombre Obra";
-    });
-    etiquetasA.forEach((a) => {
-      a.setAttribute("href", "obra_detalle.html");
-    });
-  }
+  toggleFiltro(botonObra, botonCliente, obra.nombre);
 });
 
 botonCliente.addEventListener("click", () => {
-  if (botonCliente.classList.contains("filtro-inactivo")) {
-    botonCliente.classList.remove("filtro-inactivo");
-    botonCliente.classList.add("filtro-activo");
-    botonObra.classList.remove("filtro-activo");
-    botonObra.classList.add("filtro-inactivo");
+  toggleFiltro(botonCliente, botonObra, obra.cliente);
+});
+function toggleFiltro(botonActivo, botonInactivo, valor) {
+  if (botonActivo.classList.contains("filtro-inactivo")) {
+    botonActivo.classList.remove("filtro-inactivo");
+    botonActivo.classList.add("filtro-activo");
+    botonInactivo.classList.remove("filtro-activo");
+    botonInactivo.classList.add("filtro-inactivo");
+    const etiquetasP = document.querySelectorAll("p.en-filtro");
     etiquetasP.forEach((p) => {
-      p.textContent = "Nombre Cliente";
-    });
-    etiquetasA.forEach((a) => {
-      a.setAttribute("href", "cliente_detalle.html");
+      p.innerHTML = valor;
     });
   }
-});
+}
