@@ -353,6 +353,35 @@ footer {
 .write-icon--admin{
   top:0;
 }
+.success-message-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+}
+
+.success-message {
+  background-color: rgba(236, 236, 236, 0.7);
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: #014596;
+  width: max-content;
+  opacity: 1;
+  animation: fadeAndMove 5s forwards;
+}
+
+@keyframes fadeAndMove {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
 @media (min-width: 720px) {
   .data-container {
     height: 99%;

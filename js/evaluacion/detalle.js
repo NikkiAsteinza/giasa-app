@@ -147,7 +147,7 @@ acceptButton.addEventListener("click", async function () {
 
   const response = await res.json();
   console.log(response);
-  window.location.href ="./main.html?id=" + urlParams.get("id") + "&obraActual=" + urlParams.get("obraActual");
+  window.location.href ="./main.html?success=true&id=" + urlParams.get("id") + "&obraActual=" + urlParams.get("obraActual");
   // location.reload();
 });
 
