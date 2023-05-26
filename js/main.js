@@ -103,7 +103,7 @@ async function printMappedWorkers(mappedWorkers) {
 
   for (const worker of mappedWorkers) {
     try {
-      const feedbackResponse = await fetch("http://localhost:8000/evaluaciones/id/" + worker.id);
+      const feedbackResponse = await fetch("https://giasa-api.vercel.app/evaluaciones/id/" + worker.id);
       const feedbackData = await feedbackResponse.json();
       const mappedFeedback = feedbackData
   ? feedbackData.map(result => ({
@@ -115,7 +115,7 @@ async function printMappedWorkers(mappedWorkers) {
     }))
   : [];
 
-      const mediaResponse = await fetch("http://localhost:8000/evaluaciones/midEval/" + worker.id);
+      const mediaResponse = await fetch("https://giasa-api.vercel.app/evaluaciones/midEval/" + worker.id);
       const mediaData = await mediaResponse.json();
       mediaValoracion = typeof mediaData === "string" ? mediaData.toLowerCase() : mediaData;
 
