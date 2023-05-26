@@ -31,17 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-buscaOperario.addEventListener("input", () => {
-  filterOperariosByName(mappedWorkers, buscaOperario.value);
-  printMappedWorkers(filteredMappedWorkers);
+buscaOperario.addEventListener("keypress", function(e)  {
+  if (e.key === "Enter") 
+ {const filteredWorkers= filterOperariosByName(mappedWorkers, buscaOperario.value);
+  printMappedWorkers(filteredWorkers)}
 });
 function filterOperariosByName(operarios, name) {
-  filteredMappedWorkers = operarios.filter(
+ return operarios.filter(
     (operario) =>
       operario.nombre.toLowerCase().includes(name.toLowerCase()) ||
       operario.apellido_1.toLowerCase().includes(name.toLowerCase()) ||
       operario.apellido_2.toLowerCase().includes(name.toLowerCase())
   );
+  
 }
 
 if (localStorage.getItem("token")) {
@@ -95,59 +97,57 @@ function getWorkers(endPoint) {
 
 let mediaValoracion;
 
-function printMappedWorkers(mappedWorkers) {
+async function printMappedWorkers(mappedWorkers) {
   const container = document.getElementById(mainContainer);
   container.innerHTML = "";
-  mappedWorkers.forEach((worker) => {
-    let mappedFeedback;
-    fetch("http://localhost:8000/evaluaciones/id/" + worker.id).then((res) =>
-      res.json().then((res) => {
-        if (res) {
-          console.log(res);
-          mappedFeedback = res.map((result) => ({
-            id_usuario: result.id_usuario,
-            id_operario: result.id_operario,
-            evaluacion: result.evaluacion,
-            comentario: result.comentario,
-            fecha_evaluacion: result.fecha_evaluacion,
-          }));
-        }
-      })
-    );
 
-    fetch("http://localhost:8000/evaluaciones/midEval/" + worker.id).then(
-      (res) =>
-        res.json().then((res) => {
-          if (res) {
-            console.log(res);
-            mediaValoracion =
-              typeof variable === "string" ? res.toLowerCase() : res;
-          }
-          let workerIdCopy = "";
-          if (localStorage.getItem("rol") === "admin") {
-            workerIdCopy = `<p class="b-empleado-main__fecha worker-id-copy">${worker.id}</p>`;
-          }
-          container.innerHTML += `<a href="${
-            localStorage.getItem("rol") === "admin"
-              ? empleadoDetallePage
-              : empleadoValoracionPage
-          }?id=${worker.id}&obraActual=${
-            worker.obra_actual
-          }&val=${mediaValoracion}"><div class="b-empleado-main__item unique-row">
-        <img width=45 height=45 class="usuario-imagen" src="../_resources/usuario.png" alt="">  
-        <div class="b-empleado-main__nombre-fecha">
-          <p class="b-empleado-main__nombre en-filtro">${worker.nombre} ${
-            worker.apellido_1
-          } ${worker.apellido_2}</p>
-          ${workerIdCopy}
-        </div>
-        <div class="b-empleado-main__item-punt">
-          <img width=20 height=20 src="../_resources/star.png" />
-          <p class="b-empleado-main__valor white">${mediaValoracion}</p>
-        </div>
-      </div>
-    </div></a>`;
-        })
-    );
-  });
+  for (const worker of mappedWorkers) {
+    try {
+      const feedbackResponse = await fetch("http://localhost:8000/evaluaciones/id/" + worker.id);
+      const feedbackData = await feedbackResponse.json();
+      const mappedFeedback = feedbackData
+  ? feedbackData.map(result => ({
+      id_usuario: result.id_usuario,
+      id_operario: result.id_operario,
+      evaluacion: result.evaluacion,
+      comentario: result.comentario,
+      fecha_evaluacion: result.fecha_evaluacion,
+    }))
+  : [];
+
+      const mediaResponse = await fetch("http://localhost:8000/evaluaciones/midEval/" + worker.id);
+      const mediaData = await mediaResponse.json();
+      mediaValoracion = typeof mediaData === "string" ? mediaData.toLowerCase() : mediaData;
+
+      let workerIdCopy = "";
+      if (localStorage.getItem("rol") === "admin") {
+        workerIdCopy = `<p class="b-empleado-main__fecha worker-id-copy">${worker.id}</p>`;
+      }
+
+      container.innerHTML += `<a href="${
+        localStorage.getItem("rol") === "admin"
+          ? empleadoDetallePage
+          : empleadoValoracionPage
+      }?id=${worker.id}&obraActual=${
+        worker.obra_actual
+      }&val=${mediaValoracion}"><div class="b-empleado-main__item unique-row">
+    <img width=45 height=45 class="usuario-imagen" src="../_resources/usuario.png" alt="">  
+    <div class="b-empleado-main__nombre-fecha">
+      <p class="b-empleado-main__nombre en-filtro">${worker.nombre} ${
+        worker.apellido_1
+      } ${worker.apellido_2}</p>
+      ${workerIdCopy}
+    </div>
+    <div class="b-empleado-main__item-punt">
+      <img width=20 height=20 src="../_resources/star.png" />
+      <p class="b-empleado-main__valor white">${mediaValoracion}</p>
+    </div>
+  </div>
+</div></a>`;
+
+    } catch (error) {
+      console.error("Error al obtener la información del trabajador:", error);
+    }
+  }
 }
+
