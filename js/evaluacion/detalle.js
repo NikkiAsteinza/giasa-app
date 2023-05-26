@@ -140,7 +140,7 @@ acceptButton.addEventListener("click", async function () {
       id_operario: operario,
       evaluacion: parseInt(evaluacionValor.textContent, 10),
       descripcion: document.getElementById("evaluacion-descripcion").value,
-      id_usuario: localStorage.getItem("id"),
+      id_supervisor: localStorage.getItem("id"),
       id_obra: obra,
     }),
   });
