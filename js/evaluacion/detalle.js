@@ -66,7 +66,7 @@ if (localStorage.getItem("token")) {
     botonAtrasUrl + idOp + "&obraActual=" + obraActual
   );
 
-  fetch("http://localhost:8000/evaluaciones/id/" + id).then((res) =>
+  fetch("https://giasa-api.vercel.app/evaluaciones/id/" + id).then((res) =>
     res.json().then((res) => {
       if (!res) {
         feedback = null;
@@ -130,7 +130,7 @@ acceptButton.addEventListener("click", async function () {
   }
 
   console.log("accept button clicked");
-  const res = await fetch("http://localhost:8000/evaluaciones", {
+  const res = await fetch("https://giasa-api.vercel.app/evaluaciones", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -180,7 +180,7 @@ if (
   opcionVaciaC.value = -1;
   opcionVaciaC.textContent = " ";
   selectorClientes.appendChild(opcionVaciaC);
-  fetch("http://localhost:8000/clientes/")
+  fetch("https://giasa-api.vercel.app/clientes/")
     .then((res) => res.json())
     .then((clientes) => {
       clientes.forEach((cliente) => {
@@ -198,7 +198,7 @@ if (
   opcionVaciaO.value = -1;
   opcionVaciaO.textContent = " ";
   selectorObras.appendChild(opcionVaciaO);
-  fetch("http://localhost:8000/obras/")
+  fetch("https://giasa-api.vercel.app/obras/")
     .then((res) => res.json())
     .then((obras) => {
       obras.forEach((obra) => {

@@ -21,7 +21,7 @@ if (!localStorage.getItem("token")) {
 async function tryLogin() {
   const errorMessage = document.getElementById("error-message");
   errorMessage.textContent = "";
-  const res = await fetch("http://localhost:8000/usuarios/login/", {
+  const res = await fetch("https://giasa-api.vercel.app/usuarios/login/", {
     method: "POST",
     headers: {
       Accept: "application/json",

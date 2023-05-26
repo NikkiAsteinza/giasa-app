@@ -49,19 +49,19 @@ if (localStorage.getItem("token")) {
   if (rol) {
     switch (rol) {
       case "admin":
-        endPoint = "http://localhost:8000/operarios";
+        endPoint = "https://giasa-api.vercel.app/operarios";
         getWorkers(endPoint);
         break;
       case "no_admin":
         fetch(
-          "http://localhost:8000/obras/sup/" + localStorage.getItem("id")
+          "https://giasa-api.vercel.app/obras/sup/" + localStorage.getItem("id")
         ).then((res) =>
           res.json().then((res) => {
             console.log("Id de la obra del supervisor:" + res._id);
             // mappedObra = res.map((result) => ({
             //   id: result._id,
             // }));
-            endPoint = "http://localhost:8000/operarios/obra/" + res._id;
+            endPoint = "https://giasa-api.vercel.app/operarios/obra/" + res._id;
             getWorkers(endPoint);
           })
         );
@@ -100,7 +100,7 @@ function printMappedWorkers(mappedWorkers) {
   container.innerHTML = "";
   mappedWorkers.forEach((worker) => {
     let mappedFeedback;
-    fetch("http://localhost:8000/evaluaciones/id/" + worker.id).then((res) =>
+    fetch("https://giasa-api.vercel.app/evaluaciones/id/" + worker.id).then((res) =>
       res.json().then((res) => {
         if (res) {
           console.log(res);
@@ -115,7 +115,7 @@ function printMappedWorkers(mappedWorkers) {
       })
     );
 
-    fetch("http://localhost:8000/evaluaciones/midEval/" + worker.id).then(
+    fetch("https://giasa-api.vercel.app/evaluaciones/midEval/" + worker.id).then(
       (res) =>
         res.json().then((res) => {
           if (res) {

@@ -7,8 +7,6 @@ const url = "./" + goToPage;
 const botonObra = document.getElementById("obra");
 const botonCliente = document.getElementById("cliente");
 
-
-
 let mappedFeedback, mappedSite, cliente, obra;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -24,7 +22,7 @@ if (localStorage.getItem("token")) {
     copyContent(id);
   });
 
-  fetch("http://localhost:8000/operarios/id/" + id).then((res) =>
+  fetch("https://giasa-api.vercel.app/operarios/id/" + id).then((res) =>
     res.json().then((res) => {
       console.log("----------------------------Operario: ");
       console.log(res);
@@ -34,7 +32,7 @@ if (localStorage.getItem("token")) {
     })
   );
 
-  fetch("http://localhost:8000/evaluaciones/id_op/" + id).then((res2) =>
+  fetch("https://giasa-api.vercel.app/evaluaciones/id_op/" + id).then((res2) =>
     res2.json().then((res2) => {
       if (!res2) {
         console.log("---------------- 1. No feedback for user");
@@ -85,7 +83,7 @@ function printWorkerFeedback(mappedFeedback) {
     console.log("---------------- 2. Feedback id obra");
     console.log(feedback.obra);
     console.log("---------------- 3. Mapped site: ");
-    fetch("http://localhost:8000/obras/sup/" + feedback.id_supervisor).then(
+    fetch("https://giasa-api.vercel.app/obras/sup/" + feedback.id_supervisor).then(
       (res) =>
         res.json().then((res) => {
           obra = res;

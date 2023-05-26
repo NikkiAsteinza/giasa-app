@@ -1,7 +1,7 @@
 const setClientButton = document.getElementById("setClientButton");
 setClientButton.addEventListener("click", () => {
   const name = document.getElementById("nombre")?.value;
-  fetch("http://localhost:8000/clientes", {
+  fetch("https://giasa-api.vercel.app/clientes", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -19,7 +19,7 @@ setClientButton.addEventListener("click", () => {
 
 let mappedClients;
 
-fetch("http://localhost:8000/clientes").then((res) =>
+fetch("https://giasa-api.vercel.app/clientes").then((res) =>
   res.json().then((res) => {
     console.log(res);
     mappedClients = res.map((result) => ({
@@ -43,7 +43,7 @@ const setSiteButton = document.getElementById("setSiteButton");
 setSiteButton.addEventListener("click", function () {
   const clientValue =   document.getElementById("dropdown-clientes").value;
   const clientAddress = document.getElementById("direccion")?.value;
-  fetch("http://localhost:8000/obras", {
+  fetch("https://giasa-api.vercel.app/obras", {
     method: "POST",
     headers: {
       Accept: "application/json",
